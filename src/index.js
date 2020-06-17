@@ -3,27 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {combineReducers, createStore} from "redux";
-import {Provider, connect} from "react-redux"
-import topicReducer from "./reducers/topicReducer";
-import moduleReducer from './reducers/moduleReducer'
-import lessonReducer from "./reducers/lessonReducer";
-import widgetReducer from "./reducers/widgetReducer";
-import ModuleListComponent from "./components/ModuleListComponent";
-import ModuleListContainer from "./containers/ModuleListContainer";
-import {ewq, rew, tre} from "./containers/ModuleListContainer";
-
-// const store = createStore(counterReducer)
-const reducers = combineReducers({
-    moduleReducer, lessonReducer, topicReducer, widgetReducer
-})
-const store = createStore(reducers)
 
 ReactDOM.render(
     <React.StrictMode>
-        <Provider store={store}>
-            <App/>
-        </Provider>
+        <App />
     </React.StrictMode>,
     document.getElementById('root')
 );

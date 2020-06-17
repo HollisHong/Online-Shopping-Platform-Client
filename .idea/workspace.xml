@@ -20,32 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39469112-6abe-4ee9-81b4-17a21bd4719a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/SearchComponent.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/ProductListContainer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/prototype/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/prototype/onlineShop.controller.client.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/AmazonService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/onlineShop.service.client.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/SearchRowComponent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CourseCardComponent.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CourseGridComponent.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/HomeComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomeComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CourseEditorComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CourseEditorComponent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ModuleListComponent.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TopicPillsComponent.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WidgetListComponent.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/LessonTabsContainer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/ModuleListContainer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/TopicPillsContainer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/WidgetListContainer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/lessonReducer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/moduleReducer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/topicReducer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/widgetReducer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/LessonService.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/ModuleService.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/TopicService.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/WidgetService.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchTableComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/CourseListContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/CourseListContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/ProductListContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/ProductListContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/onlineShop.service.client.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/onlineShop.service.client.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +65,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -111,7 +95,8 @@
       <option name="presentableId" value="Default" />
       <updated>1592348456667</updated>
       <workItem from="1592348457892" duration="2590000" />
-      <workItem from="1592353831190" duration="5153000" />
+      <workItem from="1592353831190" duration="7096000" />
+      <workItem from="1592413109485" duration="3778000" />
     </task>
     <servers />
   </component>
@@ -139,29 +124,41 @@
       <screen x="0" y="23" width="1920" height="1010" />
     </state>
     <state x="698" y="282" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1920.1010/-1920.23.1920.1057@0.23.1920.1010" timestamp="1592359389436" />
-    <state width="1878" height="180" key="GridCell.Tab.0.bottom" timestamp="1592357543624">
-      <screen x="0" y="23" width="1920" height="1010" />
+    <state width="1878" height="180" key="GridCell.Tab.0.bottom" timestamp="1592422718130">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state width="1878" height="274" key="GridCell.Tab.0.bottom/-1920.23.1920.1057/0.23.1920.1010@-1920.23.1920.1057" timestamp="1592351116448" />
     <state width="1878" height="191" key="GridCell.Tab.0.bottom/0.23.1920.1010/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1592355832748" />
-    <state width="1878" height="180" key="GridCell.Tab.0.bottom/0.23.1920.1010/-1920.23.1920.1057@0.23.1920.1010" timestamp="1592357543624" />
-    <state width="1878" height="180" key="GridCell.Tab.0.center" timestamp="1592357543623">
-      <screen x="0" y="23" width="1920" height="1010" />
+    <state width="1878" height="180" key="GridCell.Tab.0.bottom/0.23.1920.1010/-1920.23.1920.1057@0.23.1920.1010" timestamp="1592359730601" />
+    <state width="1878" height="180" key="GridCell.Tab.0.bottom/0.23.1920.1057/-1920.23.1920.1010@0.23.1920.1057" timestamp="1592422718130" />
+    <state width="1878" height="180" key="GridCell.Tab.0.bottom/0.23.1920.1057/-1920.23.1920.1057@0.23.1920.1057" timestamp="1592360073636" />
+    <state width="1878" height="180" key="GridCell.Tab.0.center" timestamp="1592422718129">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state width="1878" height="274" key="GridCell.Tab.0.center/-1920.23.1920.1057/0.23.1920.1010@-1920.23.1920.1057" timestamp="1592351116447" />
     <state width="1878" height="191" key="GridCell.Tab.0.center/0.23.1920.1010/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1592355832747" />
-    <state width="1878" height="180" key="GridCell.Tab.0.center/0.23.1920.1010/-1920.23.1920.1057@0.23.1920.1010" timestamp="1592357543623" />
-    <state width="1878" height="180" key="GridCell.Tab.0.left" timestamp="1592357543623">
-      <screen x="0" y="23" width="1920" height="1010" />
+    <state width="1878" height="180" key="GridCell.Tab.0.center/0.23.1920.1010/-1920.23.1920.1057@0.23.1920.1010" timestamp="1592359730600" />
+    <state width="1878" height="180" key="GridCell.Tab.0.center/0.23.1920.1057/-1920.23.1920.1010@0.23.1920.1057" timestamp="1592422718129" />
+    <state width="1878" height="180" key="GridCell.Tab.0.center/0.23.1920.1057/-1920.23.1920.1057@0.23.1920.1057" timestamp="1592360073635" />
+    <state width="1878" height="180" key="GridCell.Tab.0.left" timestamp="1592422718129">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state width="1878" height="274" key="GridCell.Tab.0.left/-1920.23.1920.1057/0.23.1920.1010@-1920.23.1920.1057" timestamp="1592351116446" />
     <state width="1878" height="191" key="GridCell.Tab.0.left/0.23.1920.1010/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1592355832746" />
-    <state width="1878" height="180" key="GridCell.Tab.0.left/0.23.1920.1010/-1920.23.1920.1057@0.23.1920.1010" timestamp="1592357543623" />
-    <state width="1878" height="180" key="GridCell.Tab.0.right" timestamp="1592357543624">
-      <screen x="0" y="23" width="1920" height="1010" />
+    <state width="1878" height="180" key="GridCell.Tab.0.left/0.23.1920.1010/-1920.23.1920.1057@0.23.1920.1010" timestamp="1592359730599" />
+    <state width="1878" height="180" key="GridCell.Tab.0.left/0.23.1920.1057/-1920.23.1920.1010@0.23.1920.1057" timestamp="1592422718129" />
+    <state width="1878" height="180" key="GridCell.Tab.0.left/0.23.1920.1057/-1920.23.1920.1057@0.23.1920.1057" timestamp="1592360073634" />
+    <state width="1878" height="180" key="GridCell.Tab.0.right" timestamp="1592422718130">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state width="1878" height="274" key="GridCell.Tab.0.right/-1920.23.1920.1057/0.23.1920.1010@-1920.23.1920.1057" timestamp="1592351116448" />
     <state width="1878" height="191" key="GridCell.Tab.0.right/0.23.1920.1010/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1592355832747" />
-    <state width="1878" height="180" key="GridCell.Tab.0.right/0.23.1920.1010/-1920.23.1920.1057@0.23.1920.1010" timestamp="1592357543624" />
+    <state width="1878" height="180" key="GridCell.Tab.0.right/0.23.1920.1010/-1920.23.1920.1057@0.23.1920.1010" timestamp="1592359730601" />
+    <state width="1878" height="180" key="GridCell.Tab.0.right/0.23.1920.1057/-1920.23.1920.1010@0.23.1920.1057" timestamp="1592422718130" />
+    <state width="1878" height="180" key="GridCell.Tab.0.right/0.23.1920.1057/-1920.23.1920.1057@0.23.1920.1057" timestamp="1592360073636" />
+    <state x="531" y="132" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1592420872434">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state x="531" y="132" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1920.1057/-1920.23.1920.1010@0.23.1920.1057" timestamp="1592420872434" />
   </component>
 </project>
