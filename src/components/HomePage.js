@@ -6,6 +6,7 @@ import {BrowserRouter, Link, Route} from "react-router-dom";
 import HomeComponent from "./HomeComponent";
 import LoginComponent from "./LoginComponent";
 import ProfileComponent from "./ProfileComponent";
+import SearchComponent from "./SearchComponent";
 
 class HomePage extends React.Component {
     render() {
@@ -32,6 +33,11 @@ class HomePage extends React.Component {
                         path='/login'
                         exact={true}
                         component={LoginComponent}
+                    />
+                    <Route
+                        path='/search'
+                        exact={true}
+                        component={SearchComponent}
                     />
 
                     <Route

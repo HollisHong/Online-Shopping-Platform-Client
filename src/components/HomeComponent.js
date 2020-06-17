@@ -6,7 +6,7 @@ const HomeComponent = () =>
     <h5>Designed by Group 17</h5>
     <br/>
     <div className="list-group">
-      <Link className="list-group-item" to='/Search'>
+      <Link className="list-group-item" to='/search'>
         Search products on Amazon/Google
       </Link>
       <Link className="list-group-item" to='/grid/products'>
