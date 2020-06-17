@@ -4,56 +4,60 @@ import CourseListContainer from "../containers/CourseListContainer";
 import CourseEditorComponent from "./CourseEditorComponent";
 import {BrowserRouter, Link, Route} from "react-router-dom";
 import HomeComponent from "./HomeComponent";
-import LoginComponent from "./LogicComponent";
+import LoginComponent from "./LoginComponent";
+import ProfileComponent from "./ProfileComponent";
 
 class HomePage extends React.Component {
-  render() {
-    return(
-      <BrowserRouter>
-        <div className="container">
-          <div>
-            {/*<h1>TAOBAO</h1>*/}
-              <img src={logo} className="App-logo" alt="logo" width={"300"}/>
-            <Link to="/">
-              <i className="fa fa-home float-right" aria-hidden="true"></i>
-            </Link>
-          </div>
-          <Route path="/login" exact={true} component={LoginComponent}/>
+    render() {
+        return (
+            <BrowserRouter>
+                <div className="container">
+                    <div>
+                        {/*<h1>TAOBAO</h1>*/}
 
-          {/*TODO: port over registration, profile components*/}
+                        <Link to="/home">
+                            <img src={logo} className="App-logo" alt="logo" width={"300"}/>
+                        </Link>
+                    </div>
 
-          <Route
-            path={['/', '/home']}
-            exact={true}
-            component={HomeComponent}
-          />
+                    {/*TODO: port over registration, profile components*/}
 
-          <Route
-            path='/courses'
-            exact={true}
-            component={CourseListContainer}/>
+                    <Route
+                        path={['/', '/home']}
+                        exact={true}
+                        component={HomeComponent}
+                    />
 
-          <Route
-            path='/:layout/courses'
-            exact={true}
-            component={CourseListContainer}/>
+                    <Route
+                        path='/login'
+                        exact={true}
+                        component={LoginComponent}
+                    />
 
-          <Route
-            path='/editor'
-            exact={true}
-            component={CourseEditorComponent}/>
+                    <Route
+                        path='/register'
+                        exact={true}
+                        component={LoginComponent}
+                    />
 
-          <Route
-              path={['/editor/course/:courseId', '/editor/course/:courseId/modules/:moduleId',
-                '/editor/course/:courseId/modules/:moduleId/lessons/:lessonId',
-                '/editor/course/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId']}
-              exact={true}
-              component={CourseEditorComponent}/>
+                    <Route
+                        path='/profile'
+                        exact={true}
+                        component={ProfileComponent}
+                    />
 
-        </div>
-      </BrowserRouter>
-    )
-  }
+
+                    {/*<Route*/}
+                    {/*    path={['/editor/course/:courseId', '/editor/course/:courseId/modules/:moduleId',*/}
+                    {/*        '/editor/course/:courseId/modules/:moduleId/lessons/:lessonId',*/}
+                    {/*        '/editor/course/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId']}*/}
+                    {/*    exact={true}*/}
+                    {/*    component={CourseEditorComponent}/>*/}
+
+                </div>
+            </BrowserRouter>
+        )
+    }
 }
 
 export default HomePage
