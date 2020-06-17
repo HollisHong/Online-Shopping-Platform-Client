@@ -8,6 +8,7 @@ import LoginComponent from "./LoginComponent";
 import ProfileComponent from "./ProfileComponent";
 import SearchTableComponent from "./SearchTableComponent";
 import AmazonListContainer from "../containers/AmazonListContainer";
+import RegisterComponent from "./RegisterComponent";
 
 class HomePage extends React.Component {
     render() {
@@ -16,10 +17,12 @@ class HomePage extends React.Component {
                 <div className="container">
                     <div>
                         {/*<h1>TAOBAO</h1>*/}
-
+                        {/*<br/>*/}
                         <Link to="/home">
-                            <img src={logo} className="App-logo" alt="logo" width={"300"}/>
+                            <img src={logo} className="App-logo float-md-none" alt="logo" width={"300"}/>
                         </Link>
+                        <br/>
+                        <br/>
                     </div>
 
                     {/*TODO: port over registration, profile components*/}
@@ -44,7 +47,7 @@ class HomePage extends React.Component {
                     <Route
                         path='/register'
                         exact={true}
-                        component={LoginComponent}
+                        component={RegisterComponent}
                     />
 
                     <Route

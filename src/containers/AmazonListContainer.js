@@ -7,35 +7,24 @@ class AmazonListContainer
     extends React.Component
 {
     state = {
-        searchTitle:'',
+        searchTitle:'iphone',
         products: [],
     }
 
     componentDidMount() {
-        AmazonService.searchProductByTitle('coke')
+        AmazonService.searchProductByTitle(this.state.searchTitle)
             .then(response =>
                 this.setState({
                     products:response
                 }))
     }
 
-    // componentDidUpdate(prevProps, prevState, snapshot) {
-    //     AmazonService.searchProductByTitle(this.state.searchTitle)
-    //         .then(response =>
-    //             this.setState({
-    //                 products:response
-    //             }))
-    // }
-
     searchProductByTitle = (title) =>
         AmazonService.searchProductByTitle(title)
             .then(response =>
-                // this.setState({
-                //     products:response
-                // }
-                {console.log(response)}
-                )
-
+                this.setState({
+                        products: response
+                    }))
 
     render() {
 
