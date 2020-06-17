@@ -1,7 +1,5 @@
 import React from 'react'
 import logo from '../logo.svg';
-import CourseListContainer from "../containers/CourseListContainer";
-import CourseEditorComponent from "./CourseEditorComponent";
 import {BrowserRouter, Link, Route} from "react-router-dom";
 import HomeComponent from "./HomeComponent";
 import LoginComponent from "./LoginComponent";
