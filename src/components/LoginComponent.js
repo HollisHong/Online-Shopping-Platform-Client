@@ -1,36 +1,51 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
-const LoginComponent = () =>
-    <div className="container">
-        <h1>Login</h1>
+export default class LoginComponent extends React.Component {
+    state = {
+        username: '',
+        password: '',
+        type: ''
+    }
+    login = () => {
+        fetch("http://localhost:8080/api/login", {
+            body: JSON.stringify({
+                username: this.state.username,
+                password: this.state.password,
+                type: this.state.type
+            }),
+            headers: {
+                'content-type': 'application/json'
+            },
+            method: 'POST',
+            credentials: "include"
+        }).then(response => response.json())
+            .catch(e => {
+                this.props.history.push("/login")
+            })
+            .then(currentUser => {
+                if(currentUser)
+                    this.props.history.push("/profile")
+            })
 
-        <label htmlFor="username">Username</label>
-        <input id="username"
-               className="form-control wbdv-field wbdv-username"
-               type="text"
-               placeholder="joe123"
-               title="Use this username to login"/>
-        <br/>
-        Password
-        <input type="password"
-               className="form-control wbdv-field wbdv-password"/>
-        <br/>
-        <a href="../profile/profile.template.client.html"
-           className="btn btn-primary wbdv-button wbdv-login">
-            Login
-        </a>
-
-        <a className="pull-right btn btn-primary wbdv-link wbdv-register"
-           href="../register/register.template.client.html">
-            Register
-        </a>
-        <br/>
-        <br/>
-        <a className="btn btn-primary wbdv-link wbdv-forgot-password">
-            Forgot Password
-        </a>
-
-
-    </div>
-
-export default LoginComponent
+    }
+    render() {
+        return(
+            <div>
+                <h1>Login</h1>
+                <input
+                    onChange={(e) => this.setState({username: e.target.value})}
+                    className="form-control"/>
+                <input
+                    onChange={(e) => this.setState({password: e.target.value})}
+                    className="form-control"/>
+                <button
+                    onClick={this.login}
+                    className="btn btn-primary">
+                    Login
+                </button>
+                <Link to="/register">Sign up</Link>
+            </div>
+        )
+    }
+}

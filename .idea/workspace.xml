@@ -20,15 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39469112-6abe-4ee9-81b4-17a21bd4719a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/SearchRowComponent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CourseEditorComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CourseEditorComponent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SearchComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchTableComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchTableComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchTableComponent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/CourseListContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/CourseListContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/ProductListContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/ProductListContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/onlineShop.service.client.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/onlineShop.service.client.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/ProductListContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/AmazonListContainer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +92,7 @@
       <updated>1592348456667</updated>
       <workItem from="1592348457892" duration="2590000" />
       <workItem from="1592353831190" duration="7096000" />
-      <workItem from="1592413109485" duration="3778000" />
+      <workItem from="1592413109485" duration="5304000" />
     </task>
     <servers />
   </component>

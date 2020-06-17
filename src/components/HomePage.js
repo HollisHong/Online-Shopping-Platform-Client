@@ -7,7 +7,7 @@ import HomeComponent from "./HomeComponent";
 import LoginComponent from "./LoginComponent";
 import ProfileComponent from "./ProfileComponent";
 import SearchTableComponent from "./SearchTableComponent";
-import ProductListContainer from "../containers/ProductListContainer";
+import AmazonListContainer from "../containers/AmazonListContainer";
 
 class HomePage extends React.Component {
     render() {
@@ -38,7 +38,7 @@ class HomePage extends React.Component {
                     <Route
                         path='/search'
                         exact={true}
-                        component={ProductListContainer}
+                        component={AmazonListContainer}
                     />
 
                     <Route

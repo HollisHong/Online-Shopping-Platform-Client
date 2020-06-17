@@ -1,22 +1,40 @@
 import React from "react";
 import SearchTableComponent from "../components/SearchTableComponent";
 import AmazonService from "../services/AmazonService";
+import courseService from "../services/CourseService";
 
-class ProductListContainer
+class AmazonListContainer
     extends React.Component
 {
     state = {
-        searchTitle:'coke',
+        searchTitle:'',
         products: [],
     }
 
     componentDidMount() {
-        AmazonService.searchProductByTitle(this.state.searchTitle)
+        AmazonService.searchProductByTitle('coke')
             .then(response =>
                 this.setState({
                     products:response
                 }))
     }
+
+    // componentDidUpdate(prevProps, prevState, snapshot) {
+    //     AmazonService.searchProductByTitle(this.state.searchTitle)
+    //         .then(response =>
+    //             this.setState({
+    //                 products:response
+    //             }))
+    // }
+
+    searchProductByTitle = (title) =>
+        AmazonService.searchProductByTitle(title)
+            .then(response =>
+                // this.setState({
+                //     products:response
+                // }
+                {console.log(response)}
+                )
 
 
     render() {
@@ -31,8 +49,7 @@ class ProductListContainer
                         searchTitle: event.target.value
                     })}
                     placeholder="Input Product Title"/>
-                <button onClick={
-                    () => this.componentDidMount()}>
+                <button onClick={() => this.searchProductByTitle(this.state.searchTitle)}>
                     Search
                 </button>
                 <br/>
@@ -47,4 +64,4 @@ class ProductListContainer
     }
 }
 
-export default ProductListContainer
+export default AmazonListContainer

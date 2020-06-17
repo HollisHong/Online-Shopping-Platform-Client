@@ -1,60 +1,79 @@
 import React from "react";
-import RegisterComponent from "./RegisterComponent";
 
-const ProfileComponent = () =>
-    <div>
-        <table>
-            <thead>
-            <tr>
-                <th>Username</th>
-                <th>Password</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Role</th>
-                <th>&nbsp;</th>
-            </tr>
+export default class ProfileComponent extends React.Component {
+    state = {
+        username: '',
+        password: '',
+        type: ''
+    }
 
-            <tr className="wbdv-form">
-                <th><input id="usernameFld" className="form-control wbdv-username-fld"
-                           placeholder="Username"/></th>
-                <th><input id="passwordFld" className="form-control wbdv-password-fld"
-                           placeholder="Password"/></th>
-                <th><input id="firstNameFld" className="form-control wbdv-first-fld"
-                           placeholder="First Name"/></th>
-                <th><input id="lastNameFld" className="form-control wbdv-last-fld"
-                           placeholder="Last Name"/></th>
-                <th><select id="roleFld" className="form-control wbdv-role-fld">
-                    <option value="FACULTY">Faculty</option>
-                    <option value="STUDENT">Student</option>
-                    <option value="ADMIN">Admin</option>
-                </select></th>
-                <th><span className="float-right" >
-            <button className="wbdv-add-btn btn"><i className="fa-2x fa fa-plus wbdv-create"></i></button>
-             <button className="wbdv-update-btn btn"><i className="fa-2x fa fa-check wbdv-update"></i></button>
-        </span></th>
-            </tr>
+    componentDidMount() {
+        fetch("http://localhost:8080/api/profile", {
+            method: 'POST',
+            credentials: "include"
+        })
+            .then(response => {
+                console.log(response)
+                return response.json()
+            })
+            .catch(e => {
+                this.props.history.push("/")
+            })
+            .then(user => {
+                if(user)
+                    this.setState({
+                        username: user.username, password: user.password, type: user.type,
+                    })
+            })
+    }
 
-            </thead>
+    update = () => {
+        fetch("http://localhost:8080/api/profile", {
+            body: JSON.stringify({username: this.state.username, password: this.state.password, type: this.state.type}),
+            headers: {
+                'content-type': 'application/json'
+            },
+            method: 'PUT',
+            credentials: "include"
+        })
+            .then(response => response.json())
+            .then(user => this.setState({
+                username: user.username, password: user.password
+            }))
+    }
 
+    logout = () => {
+        fetch("http://localhost:8080/api/logout", {
+            method: 'POST',
+            credentials: "include"
+        })
+            .then(response => this.props.history.push("/"))
 
-            <tbody className="wbdv-tbody">
-            <tr className="wbdv-user-row-template wbdv-template wbdv-user wbdv-hidden">
-                <td className="wbdv-username">alice</td>
-                <td className="wbdv-password">****</td>
-                <td className="wbdv-first-name">Alice</td>
-                <td className="wbdv-last-name">Wonderland</td>
-                <td className="wbdv-role">Faculty</td>
-                <td className="wbdv-controls">
-            <span className="float-right">
-
-            <button className="wbdv-delete btn"><i id="wbdv-remove"
-                                                   className="fa-2x fa fa-times wbdv-remove"></i></button>
-            <button className="wbdv-edit btn"> <i id="wbdv-edit" className="fa-2x fa fa-pencil wbdv-edit"></i></button>
-            </span>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
-export default ProfileComponent
+    }
+    render() {
+        return(
+            <div>
+                <h1>Profile</h1>
+                <input
+                    value={this.state.username}
+                    onChange={(e) => this.setState({username: e.target.value})}
+                    className="form-control"/>
+                <input
+                    value={this.state.password}
+                    onChange={(e) => this.setState({password: e.target.value})}
+                    className="form-control"/>
+                <h3>{this.state.type}</h3>
+                <button
+                    onClick={this.update}
+                    className="btn btn-primary">
+                    Update
+                </button>
+                <button
+                    className="btn btn-danger"
+                    onClick={this.logout}>
+                    Sign out
+                </button>
+            </div>
+        )
+    }
+}

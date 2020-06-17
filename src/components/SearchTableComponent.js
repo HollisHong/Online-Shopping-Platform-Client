@@ -5,6 +5,11 @@ import SearchRowComponent from "./SearchRowComponent";
 
 export default class SearchTableComponent
     extends React.Component {
+
+    // state = {
+    //     products: this.props.products
+    // }
+
         render() {
             return (
         <div>
