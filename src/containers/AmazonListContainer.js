@@ -2,10 +2,6 @@ import React from "react";
 import {Link} from "react-router-dom";
 import SearchTableComponent from "../components/SearchTableComponent";
 import AmazonService from "../services/AmazonService";
-<<<<<<< HEAD
-
-=======
->>>>>>> dae93310c44d19bd5cec26943c2fed328597e54b
 
 class AmazonListContainer
     extends React.Component
@@ -34,12 +30,10 @@ class AmazonListContainer
     }
 
 
-
-    // setLayout = () => {
-    //     this.props.history.push(`/${}`)
-    // }
-
     render() {
+
+        console.log(this.props)
+
         return(
             <div>
                 <h2>Search Products on Amazon</h2>
