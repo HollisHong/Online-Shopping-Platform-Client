@@ -31,9 +31,6 @@ class AmazonListContainer
 
 
     render() {
-
-        console.log(this.props)
-
         return(
             <div>
                 <h2>Search Products on Amazon</h2>
