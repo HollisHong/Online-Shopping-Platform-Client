@@ -62,13 +62,13 @@ class ProductListContainer
             <div>
                 <button onClick={
                     () => this.addProduct(this.state.newProductTitle)}>
-                    Add Course
+                    Add Product
                 </button>
                 <button onClick={
                     () => this.deleteProduct({
                         id: 61
                     })}>
-                    Delete Course
+                    Delete Product
                 </button>
                 <h2>Product List</h2>
                 <ProductTableComponent
