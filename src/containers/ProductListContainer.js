@@ -8,7 +8,7 @@ class ProductListContainer
 {
     state = {
         products: [],
-        newProductTitle: 'New Product ABC'
+        newProductTitle: "cjsysb"
     }
 
     componentDidMount() {
@@ -29,14 +29,19 @@ class ProductListContainer
 
 
     deleteProduct = (ProductToDelete) =>
-        ProductService.deleteCourse(ProductToDelete._id)
+        ProductService.deleteProduct(21)
             .then(status => this.setState(prevState => ({
                 products: prevState
                     .products.filter(product => product !== ProductToDelete)
             })))
 
-    addProduct = (product) =>
-        ProductService.createProduct(product)
+    addProduct = (productName) =>
+        ProductService.createProduct({
+            productName: productName,
+            price: 1.0,
+            details: "cjsysb"
+
+        })
             .then(theActualNewProduct =>
                       this.setState((prevState) => {
                           return {
@@ -47,9 +52,22 @@ class ProductListContainer
                           }
                       }))
 
+
+
     render() {
         return(
+
             <div>
+                <button onClick={
+                    () => this.addProduct(this.state.newProductTitle)}>
+                    Add Course
+                </button>
+                <button onClick={
+                    () => this.deleteProduct({
+                        id: 3
+                    })}>
+                    Delete Course
+                </button>
                 <h2>Product List</h2>
                 <ProductTableComponent
                     products={this.state.products}/>

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default class SearchRowComponent extends React.Component {
+export default class ProductRowComponent extends React.Component {
     state = {
         product: this.props.product
     }
@@ -8,9 +8,9 @@ export default class SearchRowComponent extends React.Component {
     render = () => (
         <tr>
             {console.log(this.state.product)}
-            <td>{this.state.product.title}</td>
+            <td>{this.state.product.productName}</td>
             <td>{this.state.product.price}</td>
-            <td><img src = {this.state.product.imageUrl}/></td>
+            <td>??</td>
 
         </tr>
     )

@@ -7,6 +7,7 @@ import ProfileComponent from "./ProfileComponent";
 import SearchTableComponent from "./SearchTableComponent";
 import AmazonListContainer from "../containers/AmazonListContainer";
 import RegisterComponent from "./RegisterComponent";
+import ProductListContainer from "../containers/ProductListContainer";
 
 class HomePage extends React.Component {
     render() {
@@ -38,6 +39,12 @@ class HomePage extends React.Component {
                         path={['/search', '/search/:title']}
                         exact={true}
                         component={AmazonListContainer}
+                    />
+
+                    <Route
+                        path='/products'
+                        exact={true}
+                        component={ProductListContainer}
                     />
 
                     <Route

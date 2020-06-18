@@ -1,7 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom";
 import SearchRowComponent from "./SearchRowComponent";
-import AmazonService from "../services/AmazonService";
 
 
 export default class SearchTableComponent
