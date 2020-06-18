@@ -14,9 +14,11 @@ class AmazonListContainer
     componentDidMount() {
         AmazonService.searchProductByTitle(this.state.searchTitle)
             .then(response =>
+                // console.log(response)
                 this.setState({
-                    products:response
-                }))
+                    products:response.products
+                })
+            )
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {

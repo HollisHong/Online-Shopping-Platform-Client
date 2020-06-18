@@ -13,7 +13,8 @@ class ProductListContainer
 
     componentDidMount() {
         ProductService.findAllProducts()
-            .then(actualArrayOfProducts =>
+            .then(
+                actualArrayOfProducts =>
                       this.setState({
                                         products: actualArrayOfProducts
                                     }))
@@ -29,7 +30,7 @@ class ProductListContainer
 
 
     deleteProduct = (ProductToDelete) =>
-        ProductService.deleteProduct(61)
+        ProductService.deleteProduct(71)
             .then(status => this.setState((prevState) => {
                 return {
                     products: prevState
@@ -66,7 +67,7 @@ class ProductListContainer
                 </button>
                 <button onClick={
                     () => this.deleteProduct({
-                        id: 61
+                        id: 71
                     })}>
                     Delete Product
                 </button>

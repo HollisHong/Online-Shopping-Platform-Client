@@ -1,44 +1,40 @@
+
+
 export const searchProductByTitle = (title) =>
-    fetch("https://amazon-price1.p.rapidapi.com/search?keywords=apple&marketplace=US".replace('apple', title), {
+    fetch("https://amazon-product-reviews-keywords.p.rapidapi.com/product/search?country=US&keyword=iphone"
+        .replace('iphone', title), {
         "method": "GET",
-        "headers": {
-            "x-rapidapi-host": "amazon-price1.p.rapidapi.com",
-            "x-rapidapi-key": "fc6203c746msh05c6757930968d3p10ea0ejsne3ad81739582"
+            "headers": {
+            "x-rapidapi-host": "amazon-product-reviews-keywords.p.rapidapi.com",
+                "x-rapidapi-key": "d84db33b52msh35262445c420772p1ec9bfjsn0aa4c6bef814"
         }
     })
-        .then(function (response) {
-            return response.json()
-        })
+    .then(response => {
+        return response.json()
+    })
+        .catch(err => {
+            console.log(err);
+        });
 
-export const findCoke = () => {
-    return fetch("https://amazon-price1.p.rapidapi.com/search?keywords=coke&marketplace=US", {
+export const findProductByASIN = (asin) => {
+    return fetch("https://amazon-product-reviews-keywords.p.rapidapi.com/product/details?country=US&asin=B01LWAM0V1"
+        .replace('B01LWAM0V1', asin), {
         "method": "GET",
         "headers": {
-            "x-rapidapi-host": "amazon-price1.p.rapidapi.com",
-            "x-rapidapi-key": "fc6203c746msh05c6757930968d3p10ea0ejsne3ad81739582"
+            "x-rapidapi-host": "amazon-product-reviews-keywords.p.rapidapi.com",
+            "x-rapidapi-key": "d84db33b52msh35262445c420772p1ec9bfjsn0aa4c6bef814"
         }
     })
-        .then(function (response) {
+        .then(response => {
             return response.json()
         })
-}
-
-export const findProductByID = (ID) => {
-    return fetch("https://amazon-price1.p.rapidapi.com/priceReport?asin=coke&marketplace=US".replace('coke', ID), {
-        "method": "GET",
-        "headers": {
-            "x-rapidapi-host": "amazon-price1.p.rapidapi.com",
-            "x-rapidapi-key": "fc6203c746msh05c6757930968d3p10ea0ejsne3ad81739582"
-        }
-    })
-        .then(function (response) {
-            return response.json()
-        })
+        .catch(err => {
+            console.log(err);
+        });
 }
 
 
 export default {
     searchProductByTitle,
-    findCoke,
-    findProductByID
+    findProductByASIN
 }

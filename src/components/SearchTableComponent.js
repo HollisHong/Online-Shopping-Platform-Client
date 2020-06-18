@@ -27,7 +27,7 @@ export default class SearchTableComponent
 
                             this.props.products.map(product =>
                                 <SearchRowComponent
-                                    key={product.ASIN}
+                                    key={product.asin}
                                     product={product}/>
                             )}
                         </tbody>

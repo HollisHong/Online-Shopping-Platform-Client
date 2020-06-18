@@ -1,5 +1,6 @@
 import React from "react";
-
+import {BrowserRouter, Link, Route} from "react-router-dom";
+import logo from "../logo.svg";
 export default class SearchRowComponent extends React.Component {
     state = {
         product: this.props.product
@@ -8,9 +9,13 @@ export default class SearchRowComponent extends React.Component {
     render = () => (
         <tr>
             {console.log(this.state.product)}
-            <td>{this.state.product.title}</td>
+            <td>
+                <Link to={`/details/${this.state.product.asin}`}>
+                    {this.state.product.title}
+                </Link>
+            </td>
             <td>{this.state.product.price}</td>
-            <td><img src = {this.state.product.imageUrl}/></td>
+            <td><img src = {this.state.product.thumbnail}/></td>
 
         </tr>
     )

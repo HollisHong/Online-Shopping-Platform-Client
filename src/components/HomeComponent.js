@@ -27,7 +27,7 @@ export default class HomeComponent extends React.Component {
                   <h3>Welcome {this.state.currentUser.username}</h3>
               }
               <div className="list-group">
-                  <Link className="list-group-item" to='/search'>
+                  <Link className="list-group-item" to='/search/ipad'>
                       Search products on Amazon/Google
                   </Link>
                   <Link className="list-group-item" to='/products'>
