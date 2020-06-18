@@ -8,7 +8,7 @@ export default class ProfileComponent extends React.Component {
     }
 
     componentDidMount() {
-        fetch(" https://cs4550-20su1-group17-server.herokuapp.com/api/profile", {
+        fetch("http://localhost:8080/api/profile", {
             method: 'POST',
             credentials: "include"
         })
@@ -22,13 +22,22 @@ export default class ProfileComponent extends React.Component {
             .then(user => {
                 if(user)
                     this.setState({
-                        username: user.username, password: user.password, type: user.type,
-                    })
+                                      username: user.username, password: user.password, type: user.type,
+                                  })
             })
     }
 
+    logout = () => {
+        fetch("http://localhost:8080/api/logout", {
+            method: 'POST',
+            credentials: "include"
+        })
+            .then(response => this.props.history.push("/"))
+
+    }
+
     update = () => {
-        fetch("https://cs4550-20su1-group17-server.herokuapp.com/api/profile", {
+        fetch("http://localhost:8080/api/profile", {
             body: JSON.stringify({username: this.state.username, password: this.state.password, type: this.state.type}),
             headers: {
                 'content-type': 'application/json'
@@ -38,22 +47,13 @@ export default class ProfileComponent extends React.Component {
         })
             .then(response => response.json())
             .then(user => this.setState({
-                username: user.username, password: user.password
-            }))
+                                            username: user.username, password: user.password
+                                        }))
     }
 
-    logout = () => {
-        fetch("https://cs4550-20su1-group17-server.herokuapp.com/api/logout", {
-            method: 'POST',
-            credentials: "include"
-        })
-            .then(response => this.props.history.push("/"))
-
-    }
     render() {
         return(
             <div>
-                <h1>Profile</h1>
                 <input
                     value={this.state.username}
                     onChange={(e) => this.setState({username: e.target.value})}

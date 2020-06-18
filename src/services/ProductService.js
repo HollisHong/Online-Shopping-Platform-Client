@@ -1,5 +1,5 @@
 const createProduct = (product) =>
-    fetch("https://cs4550-20su1-group17-server.herokuapp.com/api/products", {
+    fetch("http://localhost:8080/api/products", {
         method: 'POST',
         body: JSON.stringify(product),
         headers: {
@@ -9,7 +9,7 @@ const createProduct = (product) =>
         .then(response => response.json())
 
 const updateProduct = (productId, product) =>
-    fetch("https://cs4550-20su1-group17-server.herokuapp.com/api/products/" + productId, {
+    fetch("http://localhost:8080/api/products/" + productId, {
         method: 'PUT',
         body: JSON.stringify(product),
         headers: {
@@ -19,17 +19,17 @@ const updateProduct = (productId, product) =>
         .then(response => response.json())
 
 const deleteProduct = (productId) =>
-    fetch("https://cs4550-20su1-group17-server.herokuapp.com/api/products/" + productId, {
+    fetch("http://localhost:8080/api/products/" + productId, {
         method: 'DELETE'
     })
         .then(response => response.json())
 
 const findProductById = (productId) =>
-    fetch("https://cs4550-20su1-group17-server.herokuapp.com/api/products/" + productId)
+    fetch("http://localhost:8080/api/products/" + productId)
         .then(response => response.json())
 
 const findAllProducts = () =>
-    fetch("https://cs4550-20su1-group17-server.herokuapp.com/api/products")
+    fetch("http://localhost:8080/api/products")
         .then(response => response.json())
 
 export default {
