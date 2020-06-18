@@ -10,7 +10,7 @@ export default class ProductRowComponent extends React.Component {
             {console.log(this.state.product)}
             <td>{this.state.product.productName}</td>
             <td>{this.state.product.price}</td>
-            <td>??</td>
+            <td>{this.state.product.id}</td>
 
         </tr>
     )

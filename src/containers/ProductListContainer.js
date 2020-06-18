@@ -29,11 +29,13 @@ class ProductListContainer
 
 
     deleteProduct = (ProductToDelete) =>
-        ProductService.deleteProduct(21)
-            .then(status => this.setState(prevState => ({
-                products: prevState
-                    .products.filter(product => product !== ProductToDelete)
-            })))
+        ProductService.deleteProduct(61)
+            .then(status => this.setState((prevState) => {
+                return {
+                    products: prevState
+                        .products.filter(product => product.id !== ProductToDelete.id)
+                }
+            }))
 
     addProduct = (productName) =>
         ProductService.createProduct({
@@ -64,7 +66,7 @@ class ProductListContainer
                 </button>
                 <button onClick={
                     () => this.deleteProduct({
-                        id: 3
+                        id: 61
                     })}>
                     Delete Course
                 </button>
