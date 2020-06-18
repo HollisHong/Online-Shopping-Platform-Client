@@ -23,8 +23,6 @@ class HomePage extends React.Component {
                         <br/>
                     </div>
 
-                    {/*TODO: port over registration, profile components*/}
-
                     <Route
                         path={['/', '/home']}
                         exact={true}
@@ -37,7 +35,7 @@ class HomePage extends React.Component {
                         component={LoginComponent}
                     />
                     <Route
-                        path='/search'
+                        path={['/search', 'search/:title']}
                         exact={true}
                         component={AmazonListContainer}
                     />

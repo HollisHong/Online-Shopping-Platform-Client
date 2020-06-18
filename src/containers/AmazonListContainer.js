@@ -1,7 +1,6 @@
 import React from "react";
 import SearchTableComponent from "../components/SearchTableComponent";
 import AmazonService from "../services/AmazonService";
-import courseService from "../services/CourseService";
 
 class AmazonListContainer
     extends React.Component
@@ -26,10 +25,12 @@ class AmazonListContainer
                         products: response
                     }))
 
+
+    // setLayout = () => {
+    //     this.props.history.push(`/${}`)
+    // }
+
     render() {
-
-        console.log(this.props)
-
         return(
             <div>
                 <h2>Search Products on Amazon</h2>
