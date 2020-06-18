@@ -26,7 +26,7 @@ class AmazonListContainer
             AmazonService.searchProductByTitle(this.state.searchTitle)
                 .then(response =>
                     this.setState({
-                        products:response
+                        products:response.products
                     }))
         }
     }
