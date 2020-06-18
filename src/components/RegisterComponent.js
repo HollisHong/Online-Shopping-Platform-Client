@@ -5,7 +5,8 @@ export default class RegisterComponent extends React.Component {
     state = {
         username: '',
         password: '',
-        type: ''
+        type: 'seller',
+        error: null
     }
     register = () => {
         fetch("http://localhost:8080/api/register", {
@@ -18,12 +19,31 @@ export default class RegisterComponent extends React.Component {
             method: 'POST',
             credentials: "include"
         }).then(response => response.json())
-            .then(currentUser => this.props.history.push("/profile"))
+            .catch(e => {
+                this.setState({
+                                  error: 'Unable to register'
+                              })
+            })
+            .then(currentUser => {
+                if(currentUser) {
+                    this.props.history.push("/profile")
+                }
+            })
     }
+
+    //         .then(response => response.json())
+    //         .then(currentUser => this.props.history.push("/profile"))
+    // }
     render() {
         return(
             <div>
                 <h1>Register</h1>
+                {
+                    this.state.error &&
+                    <div className="alert alert-danger">
+                        {this.state.error}
+                    </div>
+                }
                 <input
                     onChange={(e) => this.setState({username: e.target.value})}
                     className="form-control"/>

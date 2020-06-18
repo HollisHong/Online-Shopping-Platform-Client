@@ -54,7 +54,6 @@ class HomePage extends React.Component {
                         component={ProfileComponent}
                     />
 
-
                     {/*<Route*/}
                     {/*    path={['/editor/course/:courseId', '/editor/course/:courseId/modules/:moduleId',*/}
                     {/*        '/editor/course/:courseId/modules/:moduleId/lessons/:lessonId',*/}
