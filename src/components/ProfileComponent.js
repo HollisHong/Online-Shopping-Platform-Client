@@ -8,7 +8,7 @@ export default class ProfileComponent extends React.Component {
     }
 
     componentDidMount() {
-        fetch("http://localhost:8080/api/profile", {
+        fetch(" https://cs4550-20su1-group17-server.herokuapp.com/api/profile", {
             method: 'POST',
             credentials: "include"
         })
@@ -28,7 +28,7 @@ export default class ProfileComponent extends React.Component {
     }
 
     update = () => {
-        fetch("http://localhost:8080/api/profile", {
+        fetch("https://cs4550-20su1-group17-server.herokuapp.com/api/profile", {
             body: JSON.stringify({username: this.state.username, password: this.state.password, type: this.state.type}),
             headers: {
                 'content-type': 'application/json'
@@ -43,7 +43,7 @@ export default class ProfileComponent extends React.Component {
     }
 
     logout = () => {
-        fetch("http://localhost:8080/api/logout", {
+        fetch("https://cs4550-20su1-group17-server.herokuapp.com/api/logout", {
             method: 'POST',
             credentials: "include"
         })
