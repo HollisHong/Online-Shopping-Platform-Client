@@ -8,7 +8,7 @@ export default class LoginComponent extends React.Component {
         type: ''
     }
     login = () => {
-        fetch("https://cs4550-20su1-group17-server.herokuapp.com/api/login", {
+        fetch("http://localhost:8080/api/login", {
             body: JSON.stringify({
                 username: this.state.username,
                 password: this.state.password,
@@ -25,7 +25,7 @@ export default class LoginComponent extends React.Component {
             })
             .then(currentUser => {
                 if(currentUser)
-                    this.props.history.push("/profile")
+                    this.props.history.push(`/profile/${currentUser.id}`)
             })
 
     }
@@ -39,11 +39,11 @@ export default class LoginComponent extends React.Component {
                 <input
                     onChange={(e) => this.setState({password: e.target.value})}
                     className="form-control"/>
-                <button
-                    onClick={this.login}
-                    className="btn btn-primary">
-                    Login
-                </button>
+                    <button
+                        onClick={this.login}
+                        className="btn btn-primary">
+                        Login
+                    </button>
                 <Link to="/register">Sign up</Link>
             </div>
         )
