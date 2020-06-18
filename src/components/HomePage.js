@@ -37,7 +37,7 @@ class HomePage extends React.Component {
                         component={LoginComponent}
                     />
                     <Route
-                        path='/search'
+                        path={['/search', '/search/:title']}
                         exact={true}
                         component={AmazonListContainer}
                     />

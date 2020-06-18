@@ -1,13 +1,14 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import SearchTableComponent from "../components/SearchTableComponent";
 import AmazonService from "../services/AmazonService";
-import courseService from "../services/CourseService";
+
 
 class AmazonListContainer
     extends React.Component
 {
     state = {
-        searchTitle:'iphone',
+        searchTitle: this.props.match.params.title,
         products: [],
     }
 
@@ -19,12 +20,16 @@ class AmazonListContainer
                 }))
     }
 
-    searchProductByTitle = (title) =>
-        AmazonService.searchProductByTitle(title)
-            .then(response =>
-                this.setState({
-                        products: response
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.match.params.title !== this.props.match.params.title) {
+            AmazonService.searchProductByTitle(this.state.searchTitle)
+                .then(response =>
+                    this.setState({
+                        products:response
                     }))
+        }
+    }
+
 
     render() {
 
@@ -38,8 +43,10 @@ class AmazonListContainer
                         searchTitle: event.target.value
                     })}
                     placeholder="Input Product Title"/>
-                <button onClick={() => this.searchProductByTitle(this.state.searchTitle)}>
-                    Search
+                <button>
+                    <Link to={`/search/${this.state.searchTitle}`}>
+                        Search
+                    </Link>
                 </button>
                 <br/>
 
