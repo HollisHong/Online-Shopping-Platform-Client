@@ -1,6 +1,4 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import AmazonService from "../services/AmazonService";
 
 export default class SearchRowComponent extends React.Component {
     state = {
