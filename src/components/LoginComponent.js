@@ -5,7 +5,8 @@ export default class LoginComponent extends React.Component {
     state = {
         username: '',
         password: '',
-        type: ''
+        type: '',
+        error: null
     }
     login = () => {
         fetch("http://localhost:8080/api/login", {
@@ -21,7 +22,9 @@ export default class LoginComponent extends React.Component {
             credentials: "include"
         }).then(response => response.json())
             .catch(e => {
-                this.props.history.push("/login")
+                this.setState({
+                    error: 'Oops, that\'s not a match.'
+                })
             })
             .then(currentUser => {
                 if(currentUser)
@@ -33,18 +36,52 @@ export default class LoginComponent extends React.Component {
         return(
             <div>
                 <h1>Login</h1>
-                <input
-                    onChange={(e) => this.setState({username: e.target.value})}
-                    className="form-control"/>
-                <input
-                    onChange={(e) => this.setState({password: e.target.value})}
-                    className="form-control"/>
+                {
+                    this.state.error &&
+                    <div className="alert alert-danger">
+                        {this.state.error}
+                    </div>
+                }
+                <div className="form-group row">
+                    <label htmlFor="username" className="col-sm-1 col-form-label">
+                        Username: </label>
+                    <div className="col-sm-11">
+                        <input
+                            onChange={(e) => this.setState({username: e.target.value})}
+                            className="form-control"
+                            id="username"
+                            placeholder="Alice"/>
+                    </div>
+                </div>
+
+                <div className="form-group row">
+                    <label className="col-sm-1 col-form-label" htmlFor="password">
+                        Password: </label>
+                    <div className="col-sm-11">
+                        <input
+                            onChange={(e) => this.setState({password: e.target.value})}
+                            className="form-control"
+                            id="password"
+                            placeholder="123qwe#$%"/>
+                    </div>
+                </div>
+
                     <button
                         onClick={this.login}
                         className="btn btn-primary">
                         Login
                     </button>
-                <Link to="/register">Sign up</Link>
+
+
+                    <Link to="/register">
+                        <button className="btn btn-primary">
+                            Sign up
+                        </button>
+                    </Link>
+
+
+
+
             </div>
         )
     }
