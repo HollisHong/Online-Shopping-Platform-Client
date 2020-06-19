@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../logo.svg';
+import logo1 from '../logo.png'
 import {BrowserRouter, Link, Route} from "react-router-dom";
 import HomeComponent from "./HomeComponent";
 import LoginComponent from "./LoginComponent";
@@ -17,11 +17,10 @@ class HomePage extends React.Component {
                 <div className="container">
                     <div>
                         {/*<h1>TAOBAO</h1>*/}
-                        {/*<br/>*/}
-                        <Link to="/home">
-                            <img src={logo} className="App-logo float-md-none" alt="logo" width={"300"}/>
-                        </Link>
                         <br/>
+                        <Link to="/home">
+                            <img src={logo1} className="App-logo float-md-none" alt="logo" width={"150"}/>
+                        </Link>
                         <br/>
                     </div>
 
