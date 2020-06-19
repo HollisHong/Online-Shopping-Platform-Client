@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import {login} from "../services/UserService";
 
 export default class LoginComponent extends React.Component {
     state = {
@@ -8,18 +9,7 @@ export default class LoginComponent extends React.Component {
         type: ''
     }
     login = () => {
-        fetch("http://localhost:8080/api/login", {
-            body: JSON.stringify({
-                username: this.state.username,
-                password: this.state.password,
-                type: this.state.type
-            }),
-            headers: {
-                'content-type': 'application/json'
-            },
-            method: 'POST',
-            credentials: "include"
-        }).then(response => response.json())
+        login()
             .catch(e => {
                 this.props.history.push("/login")
             })

@@ -26,7 +26,7 @@ export default class RegisterComponent extends React.Component {
             })
             .then(currentUser => {
                 if(currentUser) {
-                    this.props.history.push("/profile")
+                    this.props.history.push(`/profile/${currentUser.id}`)
                 }
             })
     }
