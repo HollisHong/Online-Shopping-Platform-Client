@@ -1,23 +1,28 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import SearchTableComponent from "../components/SearchTableComponent";
-import AmazonService from "../services/AmazonService";
-import DetailsComponent from "../components/DetailsComponent";
 
+import ReviewService from "../services/ReviewService";
+import ReviewTableComponent from "../components/ReviewTableComponent";
+import DetailsComponent from "../components/DetailsComponent";
+import AmazonService from "../services/AmazonService";
 export default class DetailsContainer
     extends React.Component
 {
     state = {
-        detailFromAmazon: [],
-        reviewFromUsers: []
+        product: [],
+        reviews: []
     }
 
     componentDidMount() {
         AmazonService.findProductByASIN(this.props.match.params.did)
-            .then(
-                response =>
+            .then(response =>
                     this.setState({
-                        detailFromAmazon: response.product}))
+                        product: response.product}))
+
+        ReviewService.findReviewsByProductId(this.props.match.params.did)
+            .then(reviews =>
+                this.setState({
+                    reviews: reviews
+                }))
     }
 
     // componentDidUpdate(prevProps, prevState, snapshot) {
@@ -39,8 +44,14 @@ export default class DetailsContainer
 
                 <div>
                     <DetailsComponent
-                        key={this.state.detailFromAmazon.url}
-                        detailFromAmazon={this.state.detailFromAmazon}/>
+                        key={this.state.product.url}
+                        product={this.state.product}/>
+                </div>
+
+                <div>
+                    {console.log(this.state.reviews)}
+                    <ReviewTableComponent
+                        reviews={this.state.reviews}/>
                 </div>
 
             </div>
