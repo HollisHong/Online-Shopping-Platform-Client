@@ -73,6 +73,8 @@ export default class LoginComponent extends React.Component {
                     </button>
 
 
+
+
                     <Link to="/register">
                         <button className="btn btn-primary">
                             Sign up

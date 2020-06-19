@@ -18,9 +18,11 @@ export default class ProductRowComponent extends React.Component {
             <td>{this.state.product.price}</td>
             <td>{this.state.product.id}</td>
 
+            <td>
             <button onClick={() => {ProductService.deleteProduct(this.state.product.id)}}>
                 delete
             </button>
+            </td>
 
         </tr>
     )
