@@ -62,7 +62,7 @@ class HomePage extends React.Component {
                     />
 
                     <Route
-                        path={['/profile', '/profile/:username']}
+                        path={['/profile', '/profile/:uid']}
                         exact={true}
                         component={ProfileComponent}
                     />

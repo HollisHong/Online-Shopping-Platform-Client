@@ -12,7 +12,7 @@ export default class ProfileComponent extends React.Component {
     }
 
     componentDidMount() {
-        fetch("https://cs4550-20su1-group17-server.herokuapp.com/api/profile", {
+        fetch("http://localhost:8080/api/profile", {
             method: 'POST',
             credentials: "include"
         })
@@ -32,7 +32,7 @@ export default class ProfileComponent extends React.Component {
     }
 
     logout = () => {
-        fetch("https://cs4550-20su1-group17-server.herokuapp.com/api/logout", {
+        fetch("http://localhost:8080/api/logout", {
             method: 'POST',
             credentials: "include"
         })
@@ -57,10 +57,10 @@ export default class ProfileComponent extends React.Component {
 
     addProduct = (productName) =>
         ProductService.createProduct({
+                                        owner: this.props.match.params.uid,
                                          productName: this.state.productName,
                                          price: this.state.productPrice,
-                                         details: this.state.productDetail
-
+                                         details: this.state.productDetail,
                                      })
             // .then(theActualNewProduct =>
             //           this.setState((prevState) => {
@@ -131,7 +131,7 @@ export default class ProfileComponent extends React.Component {
                              value={this.state.productDetail}
                              placeholder="Product Detail"/>
 
-                             <button onClick={() => this.addProduct(this.state.productName)}>
+                             <button onClick={() => this.addProduct()}>
                                  Add Product
                              </button>
 
