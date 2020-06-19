@@ -8,13 +8,12 @@ class ProductListContainer
 {
     state = {
         products: [],
-        newProductTitle: "cjsysb"
+        newProductTitle: ""
     }
 
     componentDidMount() {
         ProductService.findAllProducts()
-            .then(
-                actualArrayOfProducts =>
+            .then(actualArrayOfProducts =>
                       this.setState({
                                         products: actualArrayOfProducts
                                     }))
@@ -29,31 +28,31 @@ class ProductListContainer
     // }
 
 
-    deleteProduct = (ProductToDelete) =>
-        ProductService.deleteProduct(71)
-            .then(status => this.setState((prevState) => {
-                return {
-                    products: prevState
-                        .products.filter(product => product.id !== ProductToDelete.id)
-                }
-            }))
+    // deleteProduct = (ProductToDelete) =>
+    //     ProductService.deleteProduct(71)
+    //         .then(status => this.setState((prevState) => {
+    //             return {
+    //                 products: prevState
+    //                     .products.filter(product => product.id !== ProductToDelete.id)
+    //             }
+    //         }))
 
-    addProduct = (productName) =>
-        ProductService.createProduct({
-            productName: productName,
-            price: 1.0,
-            details: "cjsysb"
-
-        })
-            .then(theActualNewProduct =>
-                      this.setState((prevState) => {
-                          return {
-                              products: [
-                                  ...prevState.products,
-                                  theActualNewProduct
-                              ]
-                          }
-                      }))
+    // addProduct = (productName) =>
+    //     ProductService.createProduct({
+    //         productName: productName,
+    //         price: 1.0,
+    //         details: "cjsysb"
+    //
+    //     })
+    //         .then(theActualNewProduct =>
+    //                   this.setState((prevState) => {
+    //                       return {
+    //                           products: [
+    //                               ...prevState.products,
+    //                               theActualNewProduct
+    //                           ]
+    //                       }
+    //                   }))
 
 
 
@@ -61,16 +60,6 @@ class ProductListContainer
         return(
 
             <div>
-                <button onClick={
-                    () => this.addProduct(this.state.newProductTitle)}>
-                    Add Product
-                </button>
-                <button onClick={
-                    () => this.deleteProduct({
-                        id: 71
-                    })}>
-                    Delete Product
-                </button>
                 <h2>Product List</h2>
                 <ProductTableComponent
                     products={this.state.products}/>

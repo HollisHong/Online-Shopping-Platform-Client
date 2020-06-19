@@ -30,7 +30,8 @@ const findProductById = (productId) =>
 
 const findAllProducts = () =>
     fetch("http://localhost:8080/api/products")
-        .then(response => response.json())
+        .then(response =>
+                  response.json())
 
 export default {
     findAllProducts,
