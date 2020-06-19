@@ -55,12 +55,11 @@ export default class ProfileComponent extends React.Component {
             //                             }))
     }
 
-    addProduct = (productName) =>
-        ProductService.createProduct({
-                                        owner: this.props.match.params.uid,
-                                         productName: this.state.productName,
-                                         price: this.state.productPrice,
-                                         details: this.state.productDetail,
+    addProduct = (userId) =>
+        ProductService.createProduct(this.props.match.params.uid,
+            {productName: this.state.productName,
+                price: this.state.productPrice,
+                details: this.state.productDetail,
                                      })
             // .then(theActualNewProduct =>
             //           this.setState((prevState) => {

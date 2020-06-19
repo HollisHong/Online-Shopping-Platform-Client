@@ -1,5 +1,5 @@
-const createProduct = (product) =>
-    fetch("http://localhost:8080/api/products", {
+const createProduct = (uid, product) =>
+    fetch("http://localhost:8080/api/users/" + uid, {
         method: 'POST',
         body: JSON.stringify(product),
         headers: {
