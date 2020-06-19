@@ -37,7 +37,7 @@ export default class ProfileComponent extends React.Component {
     }
 
     update = () => {
-        fetch("https://cs4550-20su1-group17-server.herokuapp.com/api/profile", {
+        fetch("http://localhost:8080/api/profile", {
             method: 'PUT',
             body: JSON.stringify({username: this.state.username, password: this.state.password, type: this.state.type}),
             headers: {
