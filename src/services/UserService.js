@@ -1,5 +1,5 @@
 export const fetchProfile = () =>
-    fetch("https://cs4550-20su1-group17-server.herokuapp.com/api/profile", {
+    fetch("http://localhost:8080/api/profile", {
         method: 'POST',
         credentials: "include"
     })
