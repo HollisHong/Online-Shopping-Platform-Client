@@ -47,7 +47,7 @@ export default class HomeComponent extends React.Component {
                   }
                   {
                       this.state.currentUser.username &&
-                      <Link className="list-group-item" to='/profile'>
+                      <Link className="list-group-item" to={`/profile/${this.state.currentUser.id}`}>
                           Profile
                       </Link>
                   }
