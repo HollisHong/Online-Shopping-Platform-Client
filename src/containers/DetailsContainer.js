@@ -39,6 +39,7 @@ export default class DetailsContainer
 
                 <div>
                     <DetailsComponent
+                        key={this.state.detailFromAmazon.url}
                         detailFromAmazon={this.state.detailFromAmazon}/>
                 </div>
 
