@@ -1,6 +1,6 @@
 export const fetchProfile = () =>
     fetch("http://localhost:8080/api/profile", {
-        method: 'POST',
+        method: 'GET',
         credentials: "include"
     })
         .then(response => {

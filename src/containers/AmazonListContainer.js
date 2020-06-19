@@ -12,6 +12,7 @@ class AmazonListContainer
     }
 
     componentDidMount() {
+        (this.state.searchTitle !== undefined) &&
         AmazonService.searchProductByTitle(this.state.searchTitle)
             .then(response =>
                 // console.log(response)

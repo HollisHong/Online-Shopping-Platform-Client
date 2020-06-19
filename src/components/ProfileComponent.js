@@ -1,5 +1,6 @@
 import React from "react";
 import ProductService from "../services/ProductService";
+import {fetchProfile} from "../services/UserService";
 
 export default class ProfileComponent extends React.Component {
     state = {
@@ -12,14 +13,7 @@ export default class ProfileComponent extends React.Component {
     }
 
     componentDidMount() {
-        fetch("http://localhost:8080/api/profile", {
-            method: 'POST',
-            credentials: "include"
-        })
-            .then(response => {
-                console.log(response)
-                return response.json()
-            })
+        fetchProfile()
             .catch(e => {
                 this.props.history.push(`/profile/${e.id}`)
             })
@@ -41,7 +35,7 @@ export default class ProfileComponent extends React.Component {
     }
 
     update = () => {
-        fetch("http://localhost:8080/api/profile", {
+        fetch(`http://localhost:8080/api/profile/${this.props.match.params.uid}`, {
             method: 'PUT',
             body: JSON.stringify({username: this.state.username, password: this.state.password, type: this.state.type}),
             headers: {
