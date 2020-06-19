@@ -1,27 +1,50 @@
 import React from "react";
 import ProductService from "../services/ProductService";
 import {fetchProfile} from "../services/UserService";
+import ProductRowComponent from "./ProductRowComponent";
+import ProductTableComponent from "./ProductTableComponent";
 
 export default class ProfileComponent extends React.Component {
     state = {
+        productList: [],
+        currentUser: {
+            username: ''
+        },
         username: '',
         password: '',
         type: '',
         productName: '',
         productPrice: '',
         productDetail: '',
+        birthday: '',
+        email: 'default@gmail.com'
     }
+
+    findAllProductByUserId = () =>
+        ProductService.findAllProductByUserId(this.props.match.params.uid)
+            .then(response =>
+                      this.setState( {productList: response}))
 
     componentDidMount() {
         fetchProfile()
             .catch(e => {
-                this.props.history.push(`/profile/${e.id}`)
+                this.props.history.push(`/profile/${this.props.match.params.uid}`)
             })
             .then(user => {
-                if(user)
-                    this.setState({
-                                      username: user.username, password: user.password, type: user.type,
-                                  })
+                if (user) {
+                    if (user.id != this.props.match.params.uid) {
+                        this.setState({currentUser: {username: ''}})
+                    } else {
+                        this.setState({
+                                          currentUser: user,
+                                          username: user.username,
+                                          password: user.password,
+                                          type: user.type,
+                                          email: user.email,
+                                          birthday: user.birthday
+                                      })
+                    }
+                }
             })
     }
 
@@ -37,7 +60,9 @@ export default class ProfileComponent extends React.Component {
     update = () => {
         fetch(`http://localhost:8080/api/profile/${this.props.match.params.uid}`, {
             method: 'PUT',
-            body: JSON.stringify({username: this.state.username, password: this.state.password, type: this.state.type}),
+            body: JSON.stringify({username: this.state.username,
+                                     email: this.state.email, birthday: this.state.birthday,
+                                     password: this.state.password, type: this.state.type}),
             headers: {
                 'content-type': 'application/json'
             },
@@ -66,9 +91,28 @@ export default class ProfileComponent extends React.Component {
             //           }))
 
 
+
     render() {
         return(
             <div>
+                {
+                    !this.state.currentUser.username &&
+                    <div>
+                        <h3>
+                            need sign in
+                        </h3>
+
+                        <button onClick={() => this.findAllProductByUserId()}>
+                            show his/her on-sell products
+                        </button>
+
+                        <div>
+                            <ProductTableComponent
+                                products={this.state.productList}/>
+                        </div>
+
+                    </div>
+                }
                     {this.state.type === 'seller' &&
                      <div>
                          <h2>
@@ -88,6 +132,27 @@ export default class ProfileComponent extends React.Component {
                              className="form-control"/>
 
                              <br/>
+
+                         <h2>
+                             User Email
+                         </h2>
+                         <input type="email"
+                                className="form-control"
+                                value={this.state.email}
+                                placeholder="li.tianq@husky.neu.edu"
+                                title="The email address you use"
+                                onChange={(e) => this.setState({email: e.target.value})}/>
+                         <br/>
+
+                         <h2>
+                             User Birthday
+                         </h2>
+                         <input type="date"
+                                className="form-control"
+                                value={this.state.birthday}
+                                title="The Date of birth for you"
+                                onChange={(e) => this.setState({birthday: e.target.value})}/>
+                         <br/>
 
                          <h3>{this.state.type}</h3>
 
@@ -128,6 +193,15 @@ export default class ProfileComponent extends React.Component {
                                  Add Product
                              </button>
 
+                         <button onClick={() => this.findAllProductByUserId()}>
+                             show your on-sell products
+                         </button>
+
+                         <div>
+                             <ProductTableComponent
+                                 products={this.state.productList}/>
+                         </div>
+
                      </div>
                     }
 
@@ -151,6 +225,29 @@ export default class ProfileComponent extends React.Component {
                              className="form-control"/>
 
                              <br/>
+
+
+                         <h2>
+                             User Email
+                         </h2>
+                         <input type="email"
+                                className="form-control"
+                                placeholder="li.tianq@husky.neu.edu"
+                                title="The email address you use"
+                                onChange={(e) => this.setState({email: e.target.value})}
+                                value={this.state.email}/>
+                         <br/>
+
+                         <h2>
+                             User Birthday
+                         </h2>
+                         <input type="date"
+                                className="form-control"
+                                value={this.state.birthday}
+                                title="The Date of birth for you"
+                                onChange={(e) => this.setState({birthday: e.target.value})}/>
+                         <br/>
+
                          <h3>{this.state.type}</h3>
 
 

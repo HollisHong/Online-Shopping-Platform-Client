@@ -33,10 +33,17 @@ const findAllProducts = () =>
         .then(response =>
                   response.json())
 
+const findAllProductByUserId = (userId) =>
+    fetch("http://localhost:8080/api/users/"+ userId + "/products")
+        .then(response =>
+        response.json())
+
+
 export default {
     findAllProducts,
     findProductById,
     deleteProduct,
     updateProduct,
-    createProduct
+    createProduct,
+    findAllProductByUserId
 }
