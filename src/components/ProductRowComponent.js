@@ -10,7 +10,6 @@ export default class ProductRowComponent extends React.Component {
 
     render = () => (
         <tr>
-            {console.log(this.state.product)}
             <td>
                 <Link to={`/search/${this.state.product.productName}`}>
                     {this.state.product.productName}

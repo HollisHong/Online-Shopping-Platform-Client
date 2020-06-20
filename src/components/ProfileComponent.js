@@ -3,9 +3,6 @@ import ProductService from "../services/ProductService";
 import {fetchProfile, findUserByID} from "../services/UserService";
 import ProductTableComponent from "./ProductTableComponent";
 import MyProductTableComponent from "./MyProductTableComponent";
-import AmazonService from "../services/AmazonService";
-import ReviewService from "../services/ReviewService";
-
 export default class ProfileComponent extends React.Component {
     state = {
         productList: [],
@@ -23,8 +20,9 @@ export default class ProfileComponent extends React.Component {
         likes: '',
         lover: '',
         editing: '',
-        loggedUserName: 'sb',
-        loggedUserId:''
+        loggedUserName: '',
+        loggedUserId:'',
+        watchedType: ''
     }
 
     findAllProductByUserId = () =>
@@ -40,20 +38,19 @@ export default class ProfileComponent extends React.Component {
             .then(user => {
                 if (user) {
                     if (user.id != this.props.match.params.uid) {
-                        this.setState({
-                            loggedUserName: user.username
-                        })
                         findUserByID(this.props.match.params.uid).then(
                             response => {
                                 this.setState(
                                     {
-                                        currentUser: {username: ''},
+                                        watchedType: response.type,
+                                        currentUser: {username: response.username},
                                         likes: response.likes,
+                                        loggedUserId: user.id,
+                                        loggedUserName: user.username
                                     }
                                 )
                             }
                         )
-
                     } else {
                         this.setState({
                             currentUser: user,
@@ -64,9 +61,22 @@ export default class ProfileComponent extends React.Component {
                             birthday: user.birthday,
                             likes: user.likes,
                             lover: user.lover,
-                            loggedUserId: user.id
+                            loggedUserId: user.id,
+                            loggedUserName: user.username
                         })
                     }
+                } else {
+                    findUserByID(this.props.match.params.uid).then(
+                        response => {
+                            this.setState(
+                                {
+                                    likes: response.likes,
+                                    watchedType: response.type,
+                                    currentUser: {username: response.username},
+                                }
+                            )
+                        }
+                    )
                 }
             })
         this.findAllProductByUserId()
@@ -108,7 +118,7 @@ export default class ProfileComponent extends React.Component {
     }
 
     updateLikes = () => {
-        fetch(`http://localhost:8080/api/profile/${this.props.match.params.uid}`, {
+        fetch(`http://localhost:8080/api/profile/${this.props.match.params.uid}/update`, {
             method: 'PUT',
             body: JSON.stringify({
                 likes: this.state.likes,
@@ -155,15 +165,26 @@ export default class ProfileComponent extends React.Component {
     render() {
         return (
             <div>
-                {
-                    !this.state.currentUser.username &&
+                {this.state.currentUser.username !== this.state.loggedUserName &&
+                      this.state.watchedType === "seller" &&
+
+                      <div>
+                          <h3>This User's Selling List</h3>
+                          <ProductTableComponent
+                              products={this.state.productList}/>
+                      </div>
+                }
+
+                {this.state.currentUser.username !== this.state.loggedUserName &&
+                    this.state.watchedType == "buyer" &&
                     <div>
-                        <h3>This User's Selling List</h3>
-                        <ProductTableComponent
-                            products={this.state.productList}/>
+                    <h3>This User is a buyer!</h3>
                     </div>
                 }
-                {this.state.currentUser.username &&
+
+
+                {this.state.loggedUserName&&
+                    this.state.currentUser.username === this.state.loggedUserName &&
                 <div>
                     <h2>
                         Username
@@ -205,7 +226,10 @@ export default class ProfileComponent extends React.Component {
                            onChange={(e) => this.setState({birthday: e.target.value})}/>
                     <br/>
 
-                    <h3>{this.state.type}</h3>
+                    <h3>You are a {this.state.type}</h3>
+                     <br/>
+
+                     <h3>likes: {this.state.likes}, Recent liker: {this.state.lover}</h3>
 
                     <button
                         onClick={this.update}
@@ -220,8 +244,9 @@ export default class ProfileComponent extends React.Component {
                 </div>
                 }
 
-                {this.state.type === 'seller' &&
-                    this.state.loggedUserId === this.props.match.params.uid &&
+                {this.state.loggedUserName&&
+                    this.state.type === 'seller' &&
+                    this.state.loggedUserId == this.props.match.params.uid &&
                 <div>
 
                     <h2> Sell your product here! </h2>
@@ -256,11 +281,14 @@ export default class ProfileComponent extends React.Component {
                 </div>
                 }
 
-                {this.state.likes}
 
 
-                {(this.state.currentUser.id != this.props.match.params.uid) &&
-                <button onClick={() => {
+
+                {this.state.loggedUserId != this.props.match.params.uid &&
+                 <div>
+                 <h3>Likes he/she has: {this.state.likes} </h3>
+                     {console.log(this.state.loggedUserName)}
+                 <button onClick={() => {
                     this.setState({
                         likes: parseInt(this.state.likes) + 1,
                         lover: this.state.loggedUserName
@@ -269,6 +297,7 @@ export default class ProfileComponent extends React.Component {
                 }}>
                     like!
                 </button>
+                 </div>
                 }
             </div>
         )
