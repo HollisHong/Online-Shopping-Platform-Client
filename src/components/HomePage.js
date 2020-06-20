@@ -22,6 +22,11 @@ class HomePage extends React.Component {
                             <img src={logo1} className="App-logo float-md-none" alt="logo" width={"150"}/>
                         </Link>
                         <br/>
+                        <Link className={"float-right"}
+                              to="/home">
+                            <button>home</button>
+                        </Link>
+                        <br/>
                     </div>
 
                     <Route

@@ -48,9 +48,11 @@ export default class DetailsContainer
                         product={this.state.product}/>
                 </div>
 
+                <br/>
                 <div>
                     {console.log(this.state.reviews)}
                     <ReviewTableComponent
+                        did={this.props.match.params.did}
                         reviews={this.state.reviews}/>
                 </div>
 

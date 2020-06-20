@@ -1,32 +1,11 @@
 import React from "react";
-import ProductRowComponent from "./ProductRowComponent";
+import MyProductRowComponent from "./MyProductRowComponent";
 import {fetchProfile} from "../services/UserService";
 
 
 
-export default class ProductTableComponent
+export default class MyProductTableComponent
     extends React.Component {
-
-    state = {
-        type: ''
-
-    }
-
-
-    componentDidMount() {
-        fetchProfile()
-            .catch(e => {})
-            .then(user => {
-                if (user) {
-                    this.setState({
-                        type: user.type
-                    })
-                } else {
-                    this.setState({
-                        type: 'dad'
-                    })
-                }
-            })}
 
 
     render() {
@@ -39,7 +18,6 @@ export default class ProductTableComponent
                         <th>Name</th>
                         <th>Price</th>
                         <th>Poster</th>
-                        <th>Options</th>
                     </tr>
                     </thead>
 
@@ -47,8 +25,7 @@ export default class ProductTableComponent
                     {
 
                         this.props.products.map(product =>
-                            <ProductRowComponent
-                                type={this.state.type}
+                            <MyProductRowComponent
                                 key={product.id}
                                 product={product}/>
                         )}
