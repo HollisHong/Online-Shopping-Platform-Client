@@ -26,6 +26,7 @@ export default class ReviewTableComponent
             })
     }
 
+
     addReview = () =>
         ReviewService.createReview(this.props.did,
             {
@@ -45,6 +46,7 @@ export default class ReviewTableComponent
                     <tr>
                         <th>User Name</th>
                         <th>Review</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
 
@@ -52,6 +54,7 @@ export default class ReviewTableComponent
                     {
                         this.props.reviews.map(review =>
                             <ReviewRowComponent
+                                deleteReview={this.props.deleteReview}
                                 key={review.id}
                                 review={review}/>
                         )}

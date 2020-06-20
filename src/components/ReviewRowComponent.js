@@ -1,12 +1,18 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {findUserByID} from "../services/UserService";
-import AmazonService from "../services/AmazonService";
+import {fetchProfile, findUserByID} from "../services/UserService";
+
+import ReviewService from "../services/ReviewService";
 
 export default class ReviewRowComponent extends React.Component {
     state = {
         review: this.props.review,
-        username:'cjsydasb'
+        username:'cjsydasb',
+        currentUser: {
+            username: ''
+        },
+        editing: '',
+        editingContent : ''
     }
 
     componentDidMount() {
@@ -17,19 +23,76 @@ export default class ReviewRowComponent extends React.Component {
             })
         )
 
-
+        fetchProfile()
+            .catch(e => {})
+            .then(user => {
+                if (user) {
+                    this.setState({
+                    currentUser: user}
+                    )}})
     }
+
+    updateReview = () =>
+        ReviewService.updateReview(
+            this.state.review.id,
+            {
+                ...this.state.review,
+                content: this.state.editingContent
+            })
+            .then(response => this.setState({
+                editing: '',
+                review: response
+                }))
+
+
 
     render = () => (
         <tr>
-            {console.log(this.state.review)}
+
             <td>
                 <Link to={`/profile/${this.state.review.uid}`}>
                     {this.state.username}
                 </Link>
             </td>
-            <td>{this.state.review.content}</td>
+            {!this.state.editing && <td>{this.state.review.content}</td>}
 
+            {!this.state.editing &&
+            <td>
+                {
+                    this.state.currentUser.id === this.state.review.uid &&
+                    <button onClick={() => this.setState({
+                        editing: 'yes'
+                    })}>
+                        Edit
+                    </button>
+                }
+
+                {
+                    this.state.currentUser.id !== this.state.review.uid &&
+                    <h6>You can't modify this review</h6>
+                }
+            </td>}
+
+            {this.state.editing === 'yes' &&
+            <td>
+                <input value={this.editingContent}
+                       placeholder={this.state.review.content}
+                       onChange={(event) => this.setState({
+                           editingContent: event.target.value
+                           })
+                       }/>
+            </td>}
+            {this.state.editing === 'yes' &&
+                <td>
+                <button onClick={() => this.updateReview()}>
+                update
+                </button>
+                <button onClick={() => this.props.deleteReview(this.state.review)}>
+                delete
+                </button>
+                </td>
+            }
         </tr>
+
     )
 }

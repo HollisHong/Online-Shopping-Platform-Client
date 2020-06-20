@@ -17,7 +17,8 @@ export default class MyProductTableComponent
                     <tr>
                         <th>Name</th>
                         <th>Price</th>
-                        <th>Poster</th>
+                        <th>Details</th>
+                        <th>Options</th>
                     </tr>
                     </thead>
 
@@ -26,6 +27,7 @@ export default class MyProductTableComponent
 
                         this.props.products.map(product =>
                             <MyProductRowComponent
+                                deleteProduct={this.props.deleteProduct}
                                 key={product.id}
                                 product={product}/>
                         )}

@@ -1,9 +1,10 @@
 import React from "react";
 import ProductService from "../services/ProductService";
-import {fetchProfile} from "../services/UserService";
+import {fetchProfile, findUserByID} from "../services/UserService";
 import ProductTableComponent from "./ProductTableComponent";
 import MyProductTableComponent from "./MyProductTableComponent";
 import AmazonService from "../services/AmazonService";
+import ReviewService from "../services/ReviewService";
 
 export default class ProfileComponent extends React.Component {
     state = {
@@ -18,7 +19,12 @@ export default class ProfileComponent extends React.Component {
         productPrice: '',
         productDetail: '',
         birthday: '',
-        email: 'default@gmail.com'
+        email: 'default@gmail.com',
+        likes: '',
+        lover: '',
+        editing: '',
+        loggedUserName: 'sb',
+        loggedUserId:''
     }
 
     findAllProductByUserId = () =>
@@ -34,7 +40,20 @@ export default class ProfileComponent extends React.Component {
             .then(user => {
                 if (user) {
                     if (user.id != this.props.match.params.uid) {
-                        this.setState({currentUser: {username: ''}})
+                        this.setState({
+                            loggedUserName: user.username
+                        })
+                        findUserByID(this.props.match.params.uid).then(
+                            response => {
+                                this.setState(
+                                    {
+                                        currentUser: {username: ''},
+                                        likes: response.likes,
+                                    }
+                                )
+                            }
+                        )
+
                     } else {
                         this.setState({
                             currentUser: user,
@@ -42,7 +61,10 @@ export default class ProfileComponent extends React.Component {
                             password: user.password,
                             type: user.type,
                             email: user.email,
-                            birthday: user.birthday
+                            birthday: user.birthday,
+                            likes: user.likes,
+                            lover: user.lover,
+                            loggedUserId: user.id
                         })
                     }
                 }
@@ -50,11 +72,11 @@ export default class ProfileComponent extends React.Component {
         this.findAllProductByUserId()
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevState.productList !== this.state.productList) {
-
-        }
-    }
+    // componentDidUpdate(prevProps, prevState, snapshot) {
+    //     if (prevState.productList !== this.state.productList) {
+    //
+    //     }
+    // }
 
 
     logout = () => {
@@ -71,8 +93,11 @@ export default class ProfileComponent extends React.Component {
             method: 'PUT',
             body: JSON.stringify({
                 username: this.state.username,
-                email: this.state.email, birthday: this.state.birthday,
-                password: this.state.password, type: this.state.type
+                email: this.state.email,
+                birthday: this.state.birthday,
+                password: this.state.password,
+                likes: this.state.likes,
+                lover: this.state.lover
             }),
             headers: {
                 'content-type': 'application/json'
@@ -81,6 +106,23 @@ export default class ProfileComponent extends React.Component {
         })
             .then(response => response.json())
     }
+
+    updateLikes = () => {
+        fetch(`http://localhost:8080/api/profile/${this.props.match.params.uid}`, {
+            method: 'PUT',
+            body: JSON.stringify({
+                likes: this.state.likes,
+                lover: this.state.lover
+            }),
+            headers: {
+                'content-type': 'application/json'
+            },
+            credentials: "include"
+        })
+            .then(response => response.json())
+    }
+
+
 
     addProduct = () =>
         ProductService.createProduct(this.props.match.params.uid,
@@ -95,9 +137,19 @@ export default class ProfileComponent extends React.Component {
                         ...prevState.productList,
                         response
                     ]
-                }})
+                }
+            })
         )
 
+
+    deleteProduct = (ProductToDelete) =>
+        ProductService.deleteProduct(ProductToDelete.id)
+            .then(status => this.setState((prevState) => {
+                return {
+                    productList: prevState
+                        .productList.filter(product => product !== ProductToDelete)
+                }
+            }))
 
 
     render() {
@@ -106,15 +158,9 @@ export default class ProfileComponent extends React.Component {
                 {
                     !this.state.currentUser.username &&
                     <div>
-                        <button onClick={() => this.findAllProductByUserId()}>
-                            show his/her on-sell products
-                        </button>
-
-                        <div>
-                            <ProductTableComponent
-                                products={this.state.productList}/>
-                        </div>
-
+                        <h3>This User's Selling List</h3>
+                        <ProductTableComponent
+                            products={this.state.productList}/>
                     </div>
                 }
                 {this.state.currentUser.username &&
@@ -175,6 +221,7 @@ export default class ProfileComponent extends React.Component {
                 }
 
                 {this.state.type === 'seller' &&
+                    this.state.loggedUserId === this.props.match.params.uid &&
                 <div>
 
                     <h2> Sell your product here! </h2>
@@ -202,10 +249,26 @@ export default class ProfileComponent extends React.Component {
                     </button>
                     <div>
                         <MyProductTableComponent
+                            deleteProduct={this.deleteProduct}
                             products={this.state.productList}/>
                     </div>
 
                 </div>
+                }
+
+                {this.state.likes}
+
+
+                {(this.state.currentUser.id != this.props.match.params.uid) &&
+                <button onClick={() => {
+                    this.setState({
+                        likes: parseInt(this.state.likes) + 1,
+                        lover: this.state.loggedUserName
+                    })
+                    this.updateLikes()
+                }}>
+                    like!
+                </button>
                 }
             </div>
         )

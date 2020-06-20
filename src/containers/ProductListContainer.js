@@ -28,14 +28,6 @@ class ProductListContainer
     // }
 
 
-    // deleteProduct = (ProductToDelete) =>
-    //     ProductService.deleteProduct(71)
-    //         .then(status => this.setState((prevState) => {
-    //             return {
-    //                 products: prevState
-    //                     .products.filter(product => product.id !== ProductToDelete.id)
-    //             }
-    //         }))
 
     // addProduct = (productName) =>
     //     ProductService.createProduct({

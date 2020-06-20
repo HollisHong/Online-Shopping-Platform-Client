@@ -25,6 +25,17 @@ export default class DetailsContainer
                 }))
     }
 
+
+
+
+    deleteReview = (ReviewToDelete) =>
+        ReviewService.deleteReview(ReviewToDelete.id)
+            .then(response => this.setState(prevState => ({
+                reviews: prevState.reviews.filter(review => review !== ReviewToDelete)
+                }))
+            )
+
+
     // componentDidUpdate(prevProps, prevState, snapshot) {
     //     if (prevProps.match.params.title !== this.props.match.params.title) {
     //         AmazonService.searchProductByTitle(this.state.searchTitle)
@@ -52,6 +63,7 @@ export default class DetailsContainer
                 <div>
                     {console.log(this.state.reviews)}
                     <ReviewTableComponent
+                        deleteReview={this.deleteReview}
                         did={this.props.match.params.did}
                         reviews={this.state.reviews}/>
                 </div>
