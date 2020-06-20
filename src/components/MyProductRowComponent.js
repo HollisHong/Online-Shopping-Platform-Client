@@ -92,7 +92,7 @@ export default class MyProductRowComponent extends React.Component {
                     editing: 'yes'
                 })}>
                     Edit
-                </button>n
+                </button>
             </td>
             }
         </tr>
