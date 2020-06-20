@@ -9,7 +9,7 @@ export default class RegisterComponent extends React.Component {
         error: null
     }
     register = () => {
-        fetch("http://cs4550-20su1-group17-server.herokuapp.com/api/register", {
+        fetch("https://cs4550-20su1-group17-server.herokuapp.com/api/register", {
             body: JSON.stringify({username: this.state.username,
                 password: this.state.password,
                 type: this.state.type}),

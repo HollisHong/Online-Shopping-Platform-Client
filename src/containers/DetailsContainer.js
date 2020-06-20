@@ -27,6 +27,19 @@ export default class DetailsContainer
 
 
 
+    addReview = (did, review) =>
+        ReviewService.createReview(did, review).then(response =>
+            this.setState((prevState) => {
+                return {
+                    reviews: [
+                        ...prevState.reviews,
+                        response
+                    ]
+                }
+            })
+        )
+
+
 
     deleteReview = (ReviewToDelete) =>
         ReviewService.deleteReview(ReviewToDelete.id)
@@ -63,6 +76,7 @@ export default class DetailsContainer
                 <div>
                     {console.log(this.state.reviews)}
                     <ReviewTableComponent
+                        addReview={this.addReview}
                         deleteReview={this.deleteReview}
                         did={this.props.match.params.did}
                         reviews={this.state.reviews}/>

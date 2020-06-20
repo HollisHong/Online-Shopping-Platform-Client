@@ -27,12 +27,7 @@ export default class ReviewTableComponent
     }
 
 
-    addReview = () =>
-        ReviewService.createReview(this.props.did,
-            {
-                uid: this.state.currentUser.id,
-                content: this.state.review
-            })
+
 
     render() {
         return (
@@ -76,7 +71,13 @@ export default class ReviewTableComponent
 
                     {
                         this.state.currentUser.id &&
-                        <button onClick={() => this.addReview()}>
+                        <button onClick={() => this.props.addReview(
+                            this.props.did,
+                            {
+                                uid: this.state.currentUser.id,
+                                content: this.state.review
+                            }
+                        )}>
                             Add Review
                         </button>
                     }

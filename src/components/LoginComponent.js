@@ -9,7 +9,7 @@ export default class LoginComponent extends React.Component {
         error: null
     }
     login = () => {
-        fetch("http://cs4550-20su1-group17-server.herokuapp.com/api/login", {
+        fetch("https://cs4550-20su1-group17-server.herokuapp.com/api/login", {
             body: JSON.stringify({
                 username: this.state.username,
                 password: this.state.password,
