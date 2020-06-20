@@ -1,5 +1,5 @@
 export const fetchProfile = () =>
-    fetch("http://localhost:8080/api/profile", {
+    fetch("https://cs4550-20su1-group17-server.herokuapp.com/api/profile", {
         method: 'GET',
         credentials: "include"
     })
@@ -9,7 +9,7 @@ export const fetchProfile = () =>
 
 
 export const findUserByID = (uid) =>
-    fetch(`http://localhost:8080/api/users/${uid}`, {
+    fetch(`https://cs4550-20su1-group17-server.herokuapp.com/api/users/${uid}`, {
     method: 'GET',
     credentials: "include"
 })

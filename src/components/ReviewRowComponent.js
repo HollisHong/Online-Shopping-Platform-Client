@@ -7,7 +7,7 @@ import ReviewService from "../services/ReviewService";
 export default class ReviewRowComponent extends React.Component {
     state = {
         review: this.props.review,
-        username:'cjsydasb',
+        username:'',
         currentUser: {
             username: ''
         },
