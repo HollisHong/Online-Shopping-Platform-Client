@@ -18,7 +18,7 @@ export default class SearchTableComponent
                         <tr>
                             <th>Title</th>
                             <th>Price</th>
-                            <th>Poster</th>
+                            <th className="d-none d-md-table-cell">Poster</th>
                         </tr>
                         </thead>
 

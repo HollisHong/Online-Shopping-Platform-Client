@@ -1,7 +1,6 @@
 import React from "react";
 import ReviewRowComponent from "./ReviewRowComponent";
 import {fetchProfile} from "../services/UserService";
-import ReviewService from "../services/ReviewService";
 import {Link} from "react-router-dom";
 
 
@@ -71,7 +70,8 @@ export default class ReviewTableComponent
 
                     {
                         this.state.currentUser.id &&
-                        <button onClick={() => this.props.addReview(
+                        <button className="btn btn-success"
+                            onClick={() => this.props.addReview(
                             this.props.did,
                             {
                                 uid: this.state.currentUser.id,

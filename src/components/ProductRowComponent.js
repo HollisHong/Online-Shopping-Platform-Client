@@ -16,7 +16,7 @@ export default class ProductRowComponent extends React.Component {
                 </Link>
             </td>
             <td>{this.state.product.price}</td>
-            <td>{this.state.product.id}</td>
+            <td className="d-none d-md-table-cell">{this.state.product.details}</td>
             <td>
                 {this.props.type === 'buyer' &&
                     <button>

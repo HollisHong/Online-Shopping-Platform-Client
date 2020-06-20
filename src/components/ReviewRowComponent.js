@@ -12,7 +12,7 @@ export default class ReviewRowComponent extends React.Component {
             username: ''
         },
         editing: '',
-        editingContent : ''
+        editingContent : this.props.review.content
     }
 
     componentDidMount() {
@@ -60,7 +60,8 @@ export default class ReviewRowComponent extends React.Component {
             <td>
                 {
                     this.state.currentUser.id === this.state.review.uid &&
-                    <button onClick={() => this.setState({
+                    <button className="btn btn-info"
+                        onClick={() => this.setState({
                         editing: 'yes'
                     })}>
                         Edit
@@ -84,10 +85,12 @@ export default class ReviewRowComponent extends React.Component {
             </td>}
             {this.state.editing === 'yes' &&
                 <td>
-                <button onClick={() => this.updateReview()}>
+                <button className="btn btn-success"
+                    onClick={() => this.updateReview()}>
                 update
                 </button>
-                <button onClick={() => this.props.deleteReview(this.state.review)}>
+                <button className="btn btn-danger"
+                    onClick={() => this.props.deleteReview(this.state.review)}>
                 delete
                 </button>
                 </td>

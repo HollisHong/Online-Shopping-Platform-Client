@@ -5,9 +5,9 @@ import ProductService from "../services/ProductService";
 export default class MyProductRowComponent extends React.Component {
     state = {
         product: this.props.product,
-        price: '',
-        details: '',
-        productName: '',
+        price: this.props.product.price,
+        details: this.props.product.details,
+        productName: this.props.product.productName,
         editing: ''
     }
 
@@ -43,7 +43,8 @@ export default class MyProductRowComponent extends React.Component {
 
             {this.state.editing === 'yes' &&
             <td>
-                <button onClick={() => {
+                <button className="btn btn-success"
+                    onClick={() => {
                     ProductService.updateProduct(this.state.product.id, {
                         price: this.state.price,
                         productName: this.state.productName,
@@ -56,12 +57,14 @@ export default class MyProductRowComponent extends React.Component {
                 }}>
                     Update
                 </button>
-                <button onClick={() => {
+                <button className="btn btn-danger"
+                    onClick={() => {
                     this.props.deleteProduct(this.state.product)
                 }}>
                     delete
                 </button>
-            </td>}
+            </td>
+            }
 
             {!this.state.editing &&
             <td>
@@ -78,20 +81,20 @@ export default class MyProductRowComponent extends React.Component {
             }
 
             {!this.state.editing &&
-            <td>
+            <td className="d-none d-md-table-cell">
                 {this.state.product.details}
             </td>}
 
             {!this.state.editing &&
             <td>
-                <button onClick={() => this.setState({
+                <button className="btn btn-info"
+                    onClick={() => this.setState({
                     editing: 'yes'
                 })}>
                     Edit
-                </button>
-            </td>}
-
-
+                </button>n
+            </td>
+            }
         </tr>
     )
 }

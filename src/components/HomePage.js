@@ -4,7 +4,6 @@ import {BrowserRouter, Link, Route} from "react-router-dom";
 import HomeComponent from "./HomeComponent";
 import LoginComponent from "./LoginComponent";
 import ProfileComponent from "./ProfileComponent";
-import SearchTableComponent from "./SearchTableComponent";
 import AmazonListContainer from "../containers/AmazonListContainer";
 import RegisterComponent from "./RegisterComponent";
 import ProductListContainer from "../containers/ProductListContainer";
@@ -16,16 +15,16 @@ class HomePage extends React.Component {
             <BrowserRouter>
                 <div className="container">
                     <div>
-                        {/*<h1>TAOBAO</h1>*/}
                         <br/>
                         <Link to="/home">
-                            <img src={logo1} className="App-logo float-md-none" alt="logo" width={"150"}/>
+                            <img title="go back to home"
+                                src={logo1} className="App-logo float-md-none" alt="logo" width={"150"}/>
                         </Link>
                         <br/>
-                        <Link className={"float-right"}
-                              to="/home">
-                            <button>home</button>
-                        </Link>
+                        {/*<Link className={"float-right"}*/}
+                        {/*      to="/home">*/}
+                        {/*    <button>home</button>*/}
+                        {/*</Link>*/}
                         <br/>
                     </div>
 

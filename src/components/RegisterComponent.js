@@ -31,9 +31,6 @@ export default class RegisterComponent extends React.Component {
             })
     }
 
-    //         .then(response => response.json())
-    //         .then(currentUser => this.props.history.push("/profile"))
-    // }
     render() {
         return(
             <div>
@@ -47,10 +44,15 @@ export default class RegisterComponent extends React.Component {
                 <input
                     onChange={(e) => this.setState({username: e.target.value})}
                     className="form-control"/>
+                    <br/>
+
                 <input
                     onChange={(e) => this.setState({password: e.target.value})}
+                    type={"password"}
                     className="form-control"/>
-                <select onChange={(e) => this.setState({type: e.target.value})}>
+                    <br/>
+                <select className="form-control"
+                    onChange={(e) => this.setState({type: e.target.value})}>
                     <option value="seller">
                         seller
                     </option>
@@ -58,6 +60,9 @@ export default class RegisterComponent extends React.Component {
                         buyer
                     </option>
                 </select>
+
+                <br/>
+
                 <br/>
                 <button
                     onClick={this.register}

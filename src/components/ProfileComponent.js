@@ -15,7 +15,7 @@ export default class ProfileComponent extends React.Component {
         productName: '',
         productPrice: '',
         productDetail: '',
-        birthday: '',
+        birthday: '1999-01-01',
         email: 'default@gmail.com',
         likes: '',
         lover: '',
@@ -250,26 +250,27 @@ export default class ProfileComponent extends React.Component {
                 <div>
 
                     <h2> Sell your product here! </h2>
-                    <input
+                    <input className="form-control"
                         onChange={(event) => this.setState({
                             productName: event.target.value
                         })}
                         value={this.state.productName}
                         placeholder="Product Name"/>
-                    <input
+                    <input className="form-control"
                         onChange={(event) => this.setState({
                             productPrice: event.target.value
                         })}
                         value={this.state.productPrice}
                         placeholder="Product Price"/>
-                    <input
+                    <input className="form-control"
                         onChange={(event) => this.setState({
                             productDetail: event.target.value
                         })}
                         value={this.state.productDetail}
                         placeholder="Product Detail"/>
 
-                    <button onClick={() => this.addProduct()}>
+                    <button className="btn btn-success"
+                        onClick={() => this.addProduct()}>
                         Add Product
                     </button>
                     <div>

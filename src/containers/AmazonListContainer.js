@@ -36,17 +36,20 @@ class AmazonListContainer
     render() {
         return(
             <div>
-                <h2>Search Products on Amazon</h2>
-                <input
+                <h2 className="d-none d-sm-block">Search Products on Amazon</h2>
+                <div className="row container">
+                <input className="col-10"
                     onChange={(event) => this.setState({
                         searchTitle: event.target.value
                     })}
                     placeholder="Input Product Title"/>
-                <button>
-                    <Link to={`/search/${this.state.searchTitle}`}>
+                    <Link className="col-2"
+                        to={`/search/${this.state.searchTitle}`}>
+                <button className="btn btn-primary">
                         Search
-                    </Link>
                 </button>
+                    </Link>
+                    </div>
                 <br/>
 
                 <div>

@@ -60,6 +60,7 @@ export default class LoginComponent extends React.Component {
                     <div className="col-sm-11">
                         <input
                             onChange={(e) => this.setState({password: e.target.value})}
+                            type={"password"}
                             className="form-control"
                             id="password"
                             placeholder="123qwe#$%"/>

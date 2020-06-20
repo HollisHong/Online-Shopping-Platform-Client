@@ -1,6 +1,4 @@
 import React from "react";
-import {fetchProfile} from "../services/UserService";
-import {Link} from "react-router-dom";
 
 export default class DetailsComponent extends React.Component {
     state = {
@@ -10,7 +8,7 @@ export default class DetailsComponent extends React.Component {
     render() {
         return(
             <div>
-                <div>
+                <div className="d-none d-md-block">
                     {console.log(this.props.product)}
 
                     <h4>Title: </h4>
@@ -27,7 +25,7 @@ export default class DetailsComponent extends React.Component {
                     <br/>
 
                     <h4>Url: </h4>
-                    <h5>{this.state.product.url}</h5>
+                    <h5 >{this.state.product.url}</h5>
                     <br/>
 
                     <h4>Price Details: </h4>

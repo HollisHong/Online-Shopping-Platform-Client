@@ -38,7 +38,7 @@ export default class ProductTableComponent
                     <tr>
                         <th>Name</th>
                         <th>Price</th>
-                        <th>Poster</th>
+                        <th className="d-none d-md-table-cell">Details</th>
                         <th>Options</th>
                     </tr>
                     </thead>
