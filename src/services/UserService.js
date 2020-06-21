@@ -1,5 +1,5 @@
 export const fetchProfile = () =>
-    fetch("http://localhost:8080/api/profile", {
+    fetch("https://cs4550-20su1-group17-server.herokuapp.com/api/profile", {
         method: 'GET',
         credentials: "include"
     })
@@ -9,7 +9,7 @@ export const fetchProfile = () =>
 
 
 export const findUserByID = (uid) =>
-    fetch(`http://localhost:8080/api/users/${uid}`, {
+    fetch(`https://cs4550-20su1-group17-server.herokuapp.com/api/users/${uid}`, {
     method: 'GET',
     credentials: "include"
 })
@@ -18,7 +18,7 @@ export const findUserByID = (uid) =>
     })
 
 export const logout = () => {
-    fetch("http://localhost:8080/api/logout", {
+    fetch("https://cs4550-20su1-group17-server.herokuapp.com/api/logout", {
         method: 'POST',
         credentials: "include"
     })
@@ -28,7 +28,7 @@ export const logout = () => {
 }
 
 export const updateLikes = (id, user) => {
-    fetch(`http://localhost:8080/api/profile/${id}/update`, {
+    fetch(`https://cs4550-20su1-group17-server.herokuapp.com/api/profile/${id}/update`, {
         method: 'PUT',
         body: JSON.stringify(user),
         headers: {

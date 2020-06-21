@@ -28,7 +28,7 @@ export default class UserProfileComponent extends React.Component {
 
 
     update = () => {
-        fetch(`http://localhost:8080/api/profile/${this.state.user.id}`, {
+        fetch(`https://cs4550-20su1-group17-server.herokuapp.com/api/profile/${this.state.user.id}`, {
             method: 'PUT',
             body: JSON.stringify({
                 username: this.state.username,

@@ -1,5 +1,5 @@
 const createReview = (pid, review) =>
-    fetch(`http://localhost:8080/api/products/${pid}/reviews`, {
+    fetch(`https://cs4550-20su1-group17-server.herokuapp.com/api/products/${pid}/reviews`, {
         method: 'POST',
         body: JSON.stringify(review),
         headers: {
@@ -10,14 +10,14 @@ const createReview = (pid, review) =>
 
 
 const findReviewsByProductId = (pid) =>
-    fetch(`http://localhost:8080/api/products/${pid}/reviews`,
+    fetch(`https://cs4550-20su1-group17-server.herokuapp.com/api/products/${pid}/reviews`,
         {
             method: 'GET',
         })
         .then(response => response.json())
 
 const updateReview = (rid, review) =>
-    fetch(`http://localhost:8080/api/reviews/${rid}`, {
+    fetch(`https://cs4550-20su1-group17-server.herokuapp.com/api/reviews/${rid}`, {
         method: 'PUT',
         body: JSON.stringify(review),
         headers: {
@@ -27,7 +27,7 @@ const updateReview = (rid, review) =>
         .then(response => response.json())
 
 const deleteReview = (rid) =>
-    fetch(`http://localhost:8080/api/reviews/${rid}`, {
+    fetch(`https://cs4550-20su1-group17-server.herokuapp.com/api/reviews/${rid}`, {
         method: 'DELETE'
     })
         .then(response => response.json())
