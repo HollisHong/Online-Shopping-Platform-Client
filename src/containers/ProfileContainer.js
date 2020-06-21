@@ -21,7 +21,7 @@ export default class ProfileContainer
                 })
             })
         fetchProfile()
-            // .catch(e => {this.props.history.push(`/profile/${this.props.match.params.uid}`)})
+            .catch(e => {this.props.history.push(`/profile/${this.props.match.params.uid}`)})
             .then(user => {
                 if (user) {
                     if (user.id == this.props.match.params.uid) {

@@ -8,7 +8,7 @@ export default class VisitorProfileComponent extends React.Component {
     state = {
         user: this.props.user,
         likes: this.props.user.likes,
-        lover: this.props.user.lover
+        // lover: this.props.user.lover
 
     }
 
@@ -43,7 +43,7 @@ export default class VisitorProfileComponent extends React.Component {
                                     })
                                     updateLikes(this.state.user.id, {
                                         likes: parseInt(this.state.likes) + 1,
-                                        lover: this.state.lover
+                                        lover: this.props.visitorName
                                     })
                                 }}>
                             <i className="fa fa-thumbs-o-up" aria-hidden="true"></i>
