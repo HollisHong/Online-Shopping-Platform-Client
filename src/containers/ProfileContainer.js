@@ -1,13 +1,7 @@
-import ProductService from "../services/ProductService";
 import {fetchProfile, findUserByID} from "../services/UserService";
-
-import ProductTableComponent from "../components/ProductTableComponent"
-import MyProductTableComponent from "../components/MyProductTableComponent";
-import SellerProfileComponent from "../components/UserProfile/SellerProfileComponent"
 import UserProfileComponent from "../components/UserProfile/UserProfileComponent"
 import VisitorProfileComponent from "../components/UserProfile/VisitorProfileComponent"
 import React from "react";
-import ProductRowComponent from "../components/ProductRowComponent";
 
 export default class ProfileContainer
     extends React.Component
@@ -27,7 +21,7 @@ export default class ProfileContainer
                 })
             })
         fetchProfile()
-            .catch(e => {this.props.history.push(`/profile/${this.props.match.params.uid}`)})
+            // .catch(e => {this.props.history.push(`/profile/${this.props.match.params.uid}`)})
             .then(user => {
                 if (user) {
                     if (user.id == this.props.match.params.uid) {

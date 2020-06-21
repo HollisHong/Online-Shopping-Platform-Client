@@ -34,7 +34,7 @@ export const updateLikes = (id, user) => {
         headers: {
             'content-type': 'application/json'
         },
-        // credentials: "include"
+        credentials: "include"
     }).then(response => {
         return response.json()
     })
