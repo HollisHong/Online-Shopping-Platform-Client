@@ -19,13 +19,17 @@ export default class ProductRowComponent extends React.Component {
             <td className="d-none d-md-table-cell">{this.state.product.details}</td>
             <td>
                 {this.props.type === 'buyer' &&
-                    <button>
-                        buy
-                    </button>
+                    <Link to='/success'>
+                        <button className='btn btn-success'>
+                            <i className="fa fa-cart-plus" aria-hidden="true"></i>
+                        </button>
+                    </Link>
                 }
                 {this.props.type === 'dad' &&
-                <Link to='/login'>
-                    <button>buy</button>
+                    <Link to='/login'>
+                        <button className='btn btn-success'>
+                            <i className="fa fa-cart-plus" aria-hidden="true"></i>
+                        </button>
                     </Link>
                 }
             </td>

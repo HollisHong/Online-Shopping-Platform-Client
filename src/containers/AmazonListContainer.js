@@ -36,7 +36,7 @@ class AmazonListContainer
     render() {
         return(
             <div>
-                <h2 className="d-none d-sm-block">Search Products on Amazon</h2>
+                <h2 className="d-none d-sm-block">Search Product on Amazon</h2>
                 <div className="row container">
                 <input className="col-10"
                     onChange={(event) => this.setState({

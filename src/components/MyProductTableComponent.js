@@ -11,7 +11,6 @@ export default class MyProductTableComponent
     render() {
         return (
             <div>
-                <br/>
                 <table className="table">
                     <thead>
                     <tr>

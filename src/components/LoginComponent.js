@@ -9,7 +9,7 @@ export default class LoginComponent extends React.Component {
         error: null
     }
     login = () => {
-        fetch("https://cs4550-20su1-group17-server.herokuapp.com/api/login", {
+        fetch("http://localhost:8080/api/login", {
             body: JSON.stringify({
                 username: this.state.username,
                 password: this.state.password,
@@ -34,7 +34,7 @@ export default class LoginComponent extends React.Component {
     }
     render() {
         return(
-            <div>
+            <div className='container'>
                 <h1>Login</h1>
                 {
                     this.state.error &&
@@ -42,6 +42,8 @@ export default class LoginComponent extends React.Component {
                         {this.state.error}
                     </div>
                 }
+                <br/>
+
                 <div className="form-group row">
                     <label htmlFor="username" className="col-sm-1 col-form-label">
                         Username: </label>
@@ -66,24 +68,24 @@ export default class LoginComponent extends React.Component {
                             placeholder="123qwe#$%"/>
                     </div>
                 </div>
+                <br/>
 
-                    <button
-                        onClick={this.login}
-                        className="btn btn-primary">
-                        Login
-                    </button>
-
-
-
-
-                    <Link to="/register">
-                        <button className="btn btn-primary">
-                            Sign up
+                <div className="form-group row">
+                    <div className="col-lg-6">
+                        <button
+                            onClick={this.login}
+                            className="form-control btn btn-primary">
+                            Login
                         </button>
-                    </Link>
-
-
-
+                    </div>
+                    <div className="col-lg-6">
+                        <Link to="/register">
+                            <button className="form-control btn btn-secondary">
+                                Sign up
+                            </button>
+                        </Link>
+                    </div>
+                </div>
 
             </div>
         )

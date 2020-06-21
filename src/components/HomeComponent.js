@@ -21,17 +21,17 @@ export default class HomeComponent extends React.Component {
 
     render() {
         return(
-          <div>
-            <h5>Designed by Group 17</h5>
+          <div className='container'>
+            <h4>Online Shopping Platform - Proudly Designed by Group 17</h4>
               {this.state.currentUser.username &&
-                  <h3>Welcome {this.state.currentUser.username}</h3>
+                  <h3>Welcome, {this.state.currentUser.username}</h3>
               }
               <div className="list-group">
                   <Link className="list-group-item" to='/search'>
-                      Search products on Amazon/Google
+                      Search products on Amazon
                   </Link>
                   <Link className="list-group-item" to='/products'>
-                      Product List
+                      Local Product List
                   </Link>
                   {
                       !this.state.currentUser.username &&

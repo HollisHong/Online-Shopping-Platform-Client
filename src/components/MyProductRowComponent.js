@@ -85,7 +85,7 @@ export default class MyProductRowComponent extends React.Component {
                 {this.state.product.details}
             </td>}
 
-            {!this.state.editing &&
+            {!this.state.editing && this.props.deleteProduct &&
             <td>
                 <button className="btn btn-info"
                     onClick={() => this.setState({
@@ -93,6 +93,11 @@ export default class MyProductRowComponent extends React.Component {
                 })}>
                     Edit
                 </button>
+            </td>
+            }
+            {!this.state.editing && !this.props.deleteProduct &&
+            <td>
+                You can't modify others' products
             </td>
             }
         </tr>

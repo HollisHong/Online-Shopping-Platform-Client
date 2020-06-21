@@ -3,11 +3,12 @@ import logo1 from '../logo.png'
 import {BrowserRouter, Link, Route} from "react-router-dom";
 import HomeComponent from "./HomeComponent";
 import LoginComponent from "./LoginComponent";
-import ProfileComponent from "./ProfileComponent";
+import SuccessComponent from "./SucessComponent"
 import AmazonListContainer from "../containers/AmazonListContainer";
 import RegisterComponent from "./RegisterComponent";
 import ProductListContainer from "../containers/ProductListContainer";
 import DetailsContainer from "../containers/DetailsContainer";
+import ProfileContainer from "../containers/ProfileContainer";
 
 class HomePage extends React.Component {
     render() {
@@ -67,8 +68,17 @@ class HomePage extends React.Component {
                     <Route
                         path={['/profile', '/profile/:uid']}
                         exact={true}
-                        component={ProfileComponent}
+                        component={ProfileContainer}
+                        // component={ProfileComponent}
                     />
+
+                    <Route
+                        path='/success'
+                        exact={true}
+                        component={SuccessComponent}
+                    />
+
+
 
                     {/*<Route*/}
                     {/*    path={['/editor/course/:courseId', '/editor/course/:courseId/modules/:moduleId',*/}
